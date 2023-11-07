@@ -25,6 +25,7 @@ const SignUp = () => {
     overflow:"auto",
     height:{xs:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%"}
 }}>
+  
       <img src={test} alt="Mountain" style={{width:'50%',height:"100%",height:{xs:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%"}}}/>
     <Box component={"div"} sx={style.container}>
       <Box sx={{ display: "flex", flexDirection: "column"}}>
