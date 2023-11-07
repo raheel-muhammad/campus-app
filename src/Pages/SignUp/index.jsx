@@ -23,10 +23,9 @@ const SignUp = () => {
     borderImageSlice: 1,
     height:"869px",
     overflow:"auto",
-    height:{xs:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%"}
 }}>
 
-      <img src={test} alt="Mountain" style={{width:'50%',height:"100%",height:{xs:"100%",sm:"100%",md:"100%",lg:"100%",xl:"100%"}}}/>
+      <Box  component={'img'} src={test} alt="Mountain" sx={{width:'50%',height:"100%",display:{xs:"none",sm:"block",md:'block'}}}/>
     <Box component={"div"} sx={style.container}>
       <Box sx={{ display: "flex", flexDirection: "column"}}>
       <Box sx={{display:"flex",justifyContent:'flex-end', marginBottom: 5 }} >
