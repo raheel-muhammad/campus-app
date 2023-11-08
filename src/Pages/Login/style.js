@@ -24,6 +24,7 @@ export const style = {
   rightSide: {
     display: "flex",
     flexDirection: "column",
+    width: "70%",
   },
   signIn: {
     fontWeight: "700",

@@ -1,21 +1,14 @@
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import ForgotPassword from "./Pages/ForgotPassword";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#7433FF",
-    },
-  },
-});
-
+import theme from "./theme";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SignUp />
-      {/* <Login /> */}
+      {/* <SignUp /> */}
+      <Login />
       {/* <ForgotPassword /> */}
     </ThemeProvider>
   );

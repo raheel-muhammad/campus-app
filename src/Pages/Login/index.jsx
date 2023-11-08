@@ -11,7 +11,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
+import CustomTextField from "../../textField";
 const Login = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -23,13 +23,9 @@ const Login = () => {
           <Typography variant="h4" sx={style.signIn}>
             Sign In
           </Typography>
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            sx={style.email}
-          />
-          <TextField
+          <CustomTextField label="Email" sx={style.name} />
+
+          <CustomTextField
             id="outlined-basic"
             label="Password"
             variant="outlined"
@@ -60,16 +56,14 @@ const Login = () => {
               Sign In
             </Button>
           </Stack>
-          {
-            <Box sx={style.paragraphDiv}>
-              <Typography variant="p" sx={style.paragraphTwo}>
-                Don't have an account yet?
-              </Typography>
-              <Typography variant="p" sx={style.paragraphThree}>
-                Sign Up
-              </Typography>
-            </Box>
-          }
+          <Box sx={style.paragraphDiv}>
+            <Typography variant="p" sx={style.paragraphTwo}>
+              Don't have an account yet?
+            </Typography>
+            <Typography variant="p" sx={style.paragraphThree}>
+              Sign Up
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>

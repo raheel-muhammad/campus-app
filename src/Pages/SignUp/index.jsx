@@ -7,7 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import CustomTextField from "../../textField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import test from "../../assets/sideImage.jpg";
@@ -33,18 +33,10 @@ const SignUp = () => {
           <Typography variant="p" sx={style.paragraphTwo}>
             Register your account
           </Typography>
-          <TextField
-            id="outlined-basic"
-            label="Name"
-            variant="outlined"
-            sx={style.name}
-          />
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            sx={style.email}
-          />
+          <CustomTextField label="Name" sx={style.name} />
+
+          <CustomTextField label="Email" sx={style.name} />
+
           <FormControl sx={style.role}>
             <Typography id="demo-radio-buttons-group-label">
               Select Role:
@@ -66,11 +58,8 @@ const SignUp = () => {
               />
             </RadioGroup>
           </FormControl>
-          <TextField
-            id="outlined-basic"
+          <CustomTextField
             label="Password"
-            variant="outlined"
-            sx={style.password}
             type={toggle ? "text" : "password"}
             InputProps={{
               endAdornment: (
@@ -82,13 +71,20 @@ const SignUp = () => {
               ),
             }}
           />
-          <TextField
-            id="outlined-basic"
+          <CustomTextField
             label="Confirm"
-            variant="outlined"
-            sx={style.confirm}
-            type={"password"}
+            type={toggle ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setToggle((prev) => !prev)}>
+                    {toggle ? <RemoveRedEyeIcon /> : <VisibilityOffIcon />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
+
           <Stack spacing={2} direction="row">
             <Button variant="contained" sx={style.buttonTwo}>
               Sign Up
