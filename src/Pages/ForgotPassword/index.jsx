@@ -1,61 +1,51 @@
 import { Box } from "@mui/material";
-import React, { useState } from "react";
-import { style } from "./style";
-import TextField from "@mui/material/TextField";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import test from '../../assets/sideImage.jpg';
-
+import React from "react";
+import test from "../../assets/sideImage.jpg";
+import { style } from "./style";
 
 const ForgotPassword = () => {
-
   return (
-    <Box component = {'div'} sx={{display:"flex",border:"50px solid #B99AFF",  borderImage: 'linear-gradient(to right, #b99aff, #69477d) 1',
-    borderImageSlice: 1,height:"869px",overflow:"auto"}}>
-    <img src={test} alt="Mountain" style={{width:'50%'}}/>
-  <Box component={"div"} sx={style.container}>
-    <Box sx={{ display: "flex", flexDirection: "column"}}>
-      <Typography variant="h4" gutterBottom sx={{fontWeight:"700"}}>
-        Forgot Password
-      </Typography>    
-      <Typography variant="p" gutterBottom  style={{marginBottom: "30px",whiteSpace:""}}>
-    <pre>{"Enter your email to recieve an email to \n reset your password"}</pre>
-      </Typography>  
-      <TextField
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        sx={{ marginBottom: 5 }}
-        />
-      <Stack spacing={2} direction="row">
-        <Button
-          variant="contained"
-          sx={{ borderRadius: 50, backgroundColor: "#7433FF", width: "50%" }}
-          >
-          Send
-        </Button>
-      </Stack>
-            {<Box sx={{marginTop:"20px"}}>
-              <Typography variant="p" gutterBottom sx={{mr:2,marginTop:'10px',
-                  color: "darkgrey"}} >
+    <Box component={"div"} sx={style.border}>
+      <Box component={"img"} src={test} alt="Mountain" sx={style.image} />
+      <Box component={"div"} sx={style.container}>
+        <Box component={"div"} sx={style.rightSide}>
+          <Typography variant="h4" sx={style.ForgotPassword}>
+            Forgot Password
+          </Typography>
+          <Typography variant="p" sx={style.paragraph}>
+            <pre>
+              {"Enter your email to recieve an email to \n reset your password"}
+            </pre>
+          </Typography>
+          <TextField
+            id="outlined-basic"
+            label="Email"
+            variant="outlined"
+            sx={style.email}
+          />
+          <Stack spacing={2} direction="row">
+            <Button variant="contained" sx={style.button}>
+              Send
+            </Button>
+          </Stack>
+          {
+            <Box component={"div"} sx={style.paragraphDiv}>
+              <Typography variant="p" gutterBottom sx={style.paragraphTwo}>
                 Already have an account?
               </Typography>
-              <Typography variant="p" gutterBottom sx={{mr:2,marginTop:'10px',
-                  color: "black",textDecoration:"underline"}} >
+              <Typography variant="p" gutterBottom sx={style.paragraphThree}>
                 Sign In
               </Typography>
-            </Box> }
-
+            </Box>
+          }
+        </Box>
+      </Box>
     </Box>
-  </Box>
-  </Box>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;
