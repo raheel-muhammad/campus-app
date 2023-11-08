@@ -7,8 +7,8 @@ import theme from "./theme";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <SignUp /> */}
-      <Login />
+      <SignUp />
+      {/* <Login /> */}
       {/* <ForgotPassword /> */}
     </ThemeProvider>
   );

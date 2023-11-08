@@ -35,11 +35,6 @@ export const style = {
     marginTop: "8px",
     color: "darkgrey",
   },
-  button: {
-    borderRadius: 50,
-    backgroundColor: "#7433FF",
-    padding: "10px",
-  },
   heading: {
     fontWeight: "700",
   },

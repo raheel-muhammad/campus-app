@@ -48,11 +48,6 @@ export const style = {
     color: "darkgrey",
     textDecoration: "underline",
   },
-  button: {
-    borderRadius: 50,
-    backgroundColor: "#7433FF",
-    width: "50%",
-  },
   paragraphDiv: {
     marginTop: "20px",
   },

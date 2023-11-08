@@ -21,10 +21,10 @@ const ForgotPassword = () => {
               {"Enter your email to recieve an email to \n reset your password"}
             </pre>
           </Typography>
-          <CustomTextField label="Email" sx={style.name} />
+          <CustomTextField label="Email" />
 
           <Stack spacing={2} direction="row">
-            <CustomButton sx={style.button} />
+            <CustomButton />
           </Stack>
           <Box component={"div"} sx={style.paragraphDiv}>
             <Typography variant="p" gutterBottom sx={style.paragraphTwo}>

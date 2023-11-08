@@ -24,19 +24,17 @@ const SignUp = () => {
             <Typography variant="p" sx={style.paragraph}>
               Already have an account?
             </Typography>
-            <Button variant="contained" sx={style.button}>
-              Sign In
-            </Button>
+            <CustomButton text="Sign In" />
           </Box>
-          <Typography variant="h4" gutterBottom sx={style.heading}>
+          <Typography variant="h4" sx={style.heading}>
             Welcome to Campus App!
           </Typography>
           <Typography variant="p" sx={style.paragraphTwo}>
             Register your account
           </Typography>
-          <CustomTextField label="Name" sx={style.name} />
+          <CustomTextField label="Name" />
 
-          <CustomTextField label="Email" sx={style.name} />
+          <CustomTextField label="Email" />
 
           <FormControl sx={style.role}>
             <Typography id="demo-radio-buttons-group-label">
@@ -87,7 +85,7 @@ const SignUp = () => {
           />
 
           <Stack spacing={2} direction="row">
-            <CustomButton sx={style.button} />
+            <CustomButton text="Sign Up" />
           </Stack>
         </Box>
       </Box>

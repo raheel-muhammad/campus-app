@@ -24,7 +24,7 @@ const Login = () => {
           <Typography variant="h4" sx={style.signIn}>
             Sign In
           </Typography>
-          <CustomTextField label="Email" sx={style.name} />
+          <CustomTextField label="Email" />
 
           <CustomTextField
             id="outlined-basic"
@@ -53,7 +53,7 @@ const Login = () => {
             </Typography>
           </FormGroup>
           <Stack spacing={2} direction="row">
-            <CustomButton sx={style.button} />
+            <CustomButton text="Sign In" />
           </Stack>
           <Box sx={style.paragraphDiv}>
             <Typography variant="p" sx={style.paragraphTwo}>
