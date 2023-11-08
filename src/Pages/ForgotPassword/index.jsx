@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import test from "../../assets/sideImage.jpg";
 import { style } from "./style";
-import CustomTextField from "../../textField";
+import CustomTextField from "../../components/textField";
 
 const ForgotPassword = () => {
   return (
