@@ -11,33 +11,26 @@ import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
+import CustomTextField from "../../components/textField";
+import CustomButton from "../../components/button";
 const Login = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <Box
-      component={"div"}
-      sx={{ display: "flex", border: "50px solid #B99AFF",  borderImage: 'linear-gradient(to right, #b99aff,  #69477d) 1',
-      borderImageSlice: 1,height:"869px",overflow:"auto" }}
-    >
-      <img src={test} alt="Mountain" style={{ width: "50%",height:"100%" }} />
+    <Box component={"div"} sx={style.border}>
+      <Box src={test} component={"img"} alt="Mountain" sx={style.image} />
       <Box component={"div"} sx={style.container}>
-        <Box sx={{ display: "flex", flexDirection: "column"}}>
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: "700" }}>
+        <Box sx={style.rightSide}>
+          <Typography variant="h4" sx={style.signIn}>
             Sign In
           </Typography>
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            sx={{ marginBottom: 5 }}
-          />
-          <TextField
+          <CustomTextField label="Email" />
+
+          <CustomTextField
             id="outlined-basic"
             label="Password"
             variant="outlined"
-            sx={{ marginBottom: 5 }}
+            sx={style.password}
             type={toggle ? "text" : "password"}
             InputProps={{
               endAdornment: (
@@ -49,67 +42,27 @@ const Login = () => {
               ),
             }}
           />
-          <FormGroup
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              letterSpacing: "space-between",
-              marginBottom: 5,
-            }}
-          >
+          <FormGroup sx={style.forgotPassword}>
             <FormControlLabel
               required
               control={<Checkbox />}
               label="Remember me"
             />
-            <Typography
-              variant="p"
-              gutterBottom
-              sx={{
-                mr: 2,
-                marginTop: "10px",
-                color: "darkgrey",
-                textDecoration: "underline",
-              }}
-            >
+            <Typography variant="p" sx={style.paragraph}>
               Forgot Password?
             </Typography>
           </FormGroup>
           <Stack spacing={2} direction="row">
-            <Button
-              variant="contained"
-              sx={{
-                borderRadius: 50,
-                backgroundColor: "#7433FF",
-                width: "50%",
-              }}
-            >
-              Sign In
-            </Button>
+            <CustomButton text="Sign In" />
           </Stack>
-          {
-            <Box sx={{ marginTop: "20px" }}>
-              <Typography
-                variant="p"
-                gutterBottom
-                sx={{ mr: 2, marginTop: "10px", color: "darkgrey" }}
-              >
-                Don't have an account yet?
-              </Typography>
-              <Typography
-                variant="p"
-                gutterBottom
-                sx={{
-                  mr: 2,
-                  marginTop: "10px",
-                  color: "black",
-                  textDecoration: "underline",
-                }}
-              >
-                Sign Up
-              </Typography>
-            </Box>
-          }
+          <Box sx={style.paragraphDiv}>
+            <Typography variant="p" sx={style.paragraphTwo}>
+              Don't have an account yet?
+            </Typography>
+            <Typography variant="p" sx={style.paragraphThree}>
+              Sign Up
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>
