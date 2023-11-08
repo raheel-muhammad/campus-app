@@ -12,6 +12,7 @@ import FormGroup from "@mui/material/FormGroup";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import CustomTextField from "../../components/textField";
+import CustomButton from "../../components/button";
 const Login = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -52,9 +53,7 @@ const Login = () => {
             </Typography>
           </FormGroup>
           <Stack spacing={2} direction="row">
-            <Button variant="contained" sx={style.button}>
-              Sign In
-            </Button>
+            <CustomButton sx={style.button} />
           </Stack>
           <Box sx={style.paragraphDiv}>
             <Typography variant="p" sx={style.paragraphTwo}>

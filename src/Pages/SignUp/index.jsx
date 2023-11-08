@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import test from "../../assets/sideImage.jpg";
 import { style } from "./style";
+import CustomButton from "../../components/button";
 const SignUp = () => {
   const [toggle, setToggle] = useState(false);
   return (
@@ -86,9 +87,7 @@ const SignUp = () => {
           />
 
           <Stack spacing={2} direction="row">
-            <Button variant="contained" sx={style.buttonTwo}>
-              Sign Up
-            </Button>
+            <CustomButton sx={style.button} />
           </Stack>
         </Box>
       </Box>

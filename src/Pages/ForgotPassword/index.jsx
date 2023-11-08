@@ -6,7 +6,7 @@ import React from "react";
 import test from "../../assets/sideImage.jpg";
 import { style } from "./style";
 import CustomTextField from "../../components/textField";
-
+import CustomButton from "../../components/button";
 const ForgotPassword = () => {
   return (
     <Box component={"div"} sx={style.border}>
@@ -24,9 +24,7 @@ const ForgotPassword = () => {
           <CustomTextField label="Email" sx={style.name} />
 
           <Stack spacing={2} direction="row">
-            <Button variant="contained" sx={style.button}>
-              Send
-            </Button>
+            <CustomButton sx={style.button} />
           </Stack>
           <Box component={"div"} sx={style.paragraphDiv}>
             <Typography variant="p" gutterBottom sx={style.paragraphTwo}>
