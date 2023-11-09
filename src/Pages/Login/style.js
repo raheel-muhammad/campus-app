@@ -10,7 +10,7 @@ export const style = {
   },
   border: {
     display: "flex",
-    border: "50px solid #B99AFF",
+    border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff,  #69477d) 1",
     borderImageSlice: 1,
     height: "869px",
@@ -41,6 +41,7 @@ export const style = {
     flexDirection: "row",
     letterSpacing: "space-between",
     marginBottom: 5,
+    width: { xs: "200px", sm: "100%" },
   },
   paragraph: {
     mr: 2,
@@ -50,6 +51,7 @@ export const style = {
   },
   paragraphDiv: {
     marginTop: "20px",
+    width: { xs: "200px", sm: "100%" },
   },
   paragraphTwo: {
     mr: 2,

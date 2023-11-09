@@ -24,7 +24,7 @@ const ForgotPassword = () => {
           <CustomTextField label="Email" />
 
           <Stack spacing={2} direction="row">
-            <CustomButton />
+            <CustomButton text="send" />
           </Stack>
           <Box component={"div"} sx={style.paragraphDiv}>
             <Typography variant="p" gutterBottom sx={style.paragraphTwo}>

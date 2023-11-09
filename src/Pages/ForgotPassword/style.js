@@ -9,7 +9,7 @@ export const style = {
   },
   border: {
     display: "flex",
-    border: "50px solid #B99AFF",
+    border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff, #69477d) 1",
     borderImageSlice: 1,
     height: "869px",
