@@ -44,7 +44,8 @@ export const style = {
   paragraphThree: {
     mr: 2,
     marginTop: "10px",
-    color: "black",
+    color: "#7433ff",
     textDecoration: "underline",
+    cursor: "pointer",
   },
 };

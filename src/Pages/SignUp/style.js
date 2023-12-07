@@ -27,7 +27,7 @@ export const style = {
   signInDiv: {
     display: "flex",
     justifyContent: "flex-end",
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   paragraph: {
     mr: 2,
@@ -40,23 +40,23 @@ export const style = {
   },
   paragraphTwo: {
     color: "darkgrey",
-    marginBottom: { xs: "20px", sm: "40px", md: "40px", lg: "40px" },
-    marginTop: { xs: "20px", sm: "40px", md: "40px", lg: "40px" },
+    marginBottom: { xs: "20px", sm: "20px", md: "20px", lg: "20px" },
+    marginTop: { xs: "20px", sm: "20px", md: "20px", lg: "20px" },
   },
   name: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   email: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   role: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   password: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   confirm: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   buttonTwo: {
     borderRadius: 50,

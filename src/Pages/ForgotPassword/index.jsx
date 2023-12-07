@@ -1,36 +1,102 @@
 import { Box } from "@mui/material";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import React from "react";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { useFormik } from "formik";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import test from "../../assets/sideImage.jpg";
+import CustomButton from "../../components/Button";
+import CustomTextField from "../../components/TextField";
+import { forgotPasswordSchema } from "../../Schemas";
 import { style } from "./style";
-import CustomTextField from "../../components/textField";
-import CustomButton from "../../components/button";
+
 const ForgotPassword = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const auth = getAuth();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: forgotPasswordSchema,
+    onSubmit: async (values) => {
+      console.log("values :", values);
+      setLoading(true);
+      try {
+        await sendPasswordResetEmail(auth, values.email).then((response) => {
+          console.log("res", response);
+        });
+        formik.resetForm();
+        setLoading(false);
+        toast.success("Email Send Successfully");
+      } catch (error) {
+        setLoading(false);
+        alert(error?.message.split("/")[1].replace(")", ""));
+        console.log("testing error", error);
+      }
+    },
+  });
+
+  const formikValidation = () => {
+    return !!(
+      Object.values(formik?.errors).some((error) => !!error) ||
+      Object.values(formik?.values).some((value) =>
+        typeof value === "boolean" ? !value : !value?.length
+      )
+    );
+  };
+  const handleSignIn = () => {
+    navigate("/signin");
+  };
+
   return (
     <Box component={"div"} sx={style.border}>
       <Box component={"img"} src={test} alt="Mountain" sx={style.image} />
       <Box component={"div"} sx={style.container}>
-        <Box component={"div"} sx={style.rightSide}>
-          <Typography variant="h4" sx={style.ForgotPassword}>
+        <Box
+          component={"form"}
+          sx={style.rightSide}
+          onSubmit={formik.handleSubmit}
+        >
+          <Typography variant="h4" sx={style.ForrgotPassword}>
             Forgot Password
           </Typography>
           <Typography variant="p" sx={style.paragraph}>
             <pre>
-              {"Enter your email to recieve an email to \n reset your password"}
+              {"Enter your email to receive an email to\nreset your password"}
             </pre>
           </Typography>
-          <CustomTextField label="Email" />
-
-          <Stack spacing={2} direction="row">
-            <CustomButton text="send" />
-          </Stack>
+          <CustomTextField
+            label="Email"
+            name="email"
+            sx={{ mb: formik.errors.email ? 1.5 : 2.5 }}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+          />
+          {formik.errors.email && formik.touched.email ? (
+            <p style={{ marginTop: "2px", marginBottom: "16px", color: "red" }}>
+              {formik.errors.email}
+            </p>
+          ) : null}
+          <CustomButton
+            type="submit"
+            disabled={formikValidation()}
+            loading={loading ? "Loading..." : "Send"}
+          />
           <Box component={"div"} sx={style.paragraphDiv}>
             <Typography variant="p" gutterBottom sx={style.paragraphTwo}>
               Already have an account?
             </Typography>
-            <Typography variant="p" gutterBottom sx={style.paragraphThree}>
+            <Typography
+              variant="p"
+              gutterBottom
+              sx={style.paragraphThree}
+              onClick={handleSignIn}
+            >
               Sign In
             </Typography>
           </Box>

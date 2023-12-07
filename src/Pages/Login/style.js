@@ -28,13 +28,13 @@ export const style = {
   },
   signIn: {
     fontWeight: "700",
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   email: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   password: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   forgotPassword: {
     display: "flex",
@@ -48,6 +48,7 @@ export const style = {
     marginTop: "10px",
     color: "darkgrey",
     textDecoration: "underline",
+    cursor: "pointer",
   },
   paragraphDiv: {
     marginTop: "20px",
@@ -61,7 +62,8 @@ export const style = {
   paragraphThree: {
     mr: 2,
     marginTop: "10px",
-    color: "black",
+    color: "#7433ff",
     textDecoration: "underline",
+    cursor: "pointer",
   },
 };
