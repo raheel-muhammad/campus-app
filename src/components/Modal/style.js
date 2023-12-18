@@ -34,4 +34,10 @@ export const style = {
       color: "green",
     },
   },
+  subContainer: { fontWeight: "600" },
+  modal: {
+    display: "flex",
+    gap: "8px",
+    marginTop: "30px",
+  },
 };

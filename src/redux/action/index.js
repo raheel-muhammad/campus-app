@@ -1,4 +1,5 @@
 import { getUserData } from "./loginUser";
 import { logOutUser } from "./loginUser";
+import { getAllUserData } from "./loginUser";
 
-export { getUserData, logOutUser };
+export { getUserData, logOutUser, getAllUserData };

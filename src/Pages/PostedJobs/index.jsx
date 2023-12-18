@@ -1,10 +1,10 @@
 import React from "react";
 import Wrapper from "../Wrapper";
-import CustomCards from "../../components/CustomCards";
+import CompanyCards from "../../components/CompanyCards";
 const PostedJobs = () => {
   return (
     <Wrapper>
-      <CustomCards />
+      <CompanyCards />
     </Wrapper>
   );
 };

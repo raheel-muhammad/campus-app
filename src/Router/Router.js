@@ -4,7 +4,6 @@ import Login from "../Pages/Login";
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "../components/AdminDashboard";
 import VerifiedUser from "../Pages/VerifiedUser";
-import NonVerifiedUser from "../Pages/NonVerifiedUser";
 import ForgotPassword from "../Pages/ForgotPassword";
 import BlockedStudents from "../Pages/BlockedStudents";
 import AppliedStudents from "../Pages/AppliedStudents";
@@ -12,6 +11,8 @@ import PostedJobs from "../Pages/PostedJobs";
 import AppliedJobs from "../Pages/AppliedJobs";
 import BlockedUsers from "../Pages/BlockedUser";
 import Profile from "../Pages/Profile";
+import NonVerifiedUsers from "../Pages/NonVerifiedUser";
+
 const Router = () => {
   return (
     <Routes>
@@ -22,7 +23,7 @@ const Router = () => {
         <Route path="forgotPassword" element={<ForgotPassword />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/Verified-Users" element={<VerifiedUser />} />
-        <Route path="/Non-Verified-Users" element={<NonVerifiedUser />} />
+        <Route path="/Non-Verified-Users" element={<NonVerifiedUsers />} />
         <Route path="/Blocked-Users" element={<BlockedUsers />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Applied-Jobs" element={<AppliedJobs />} />

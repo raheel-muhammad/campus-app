@@ -2,8 +2,11 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import { Button, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/material";
+import { style } from "./style";
+import CustomModal from "../../components/Modal";
 
-const StdCards = () => {
+const StdCards = ({ children }) => {
+  const [open, setOpen] = React.useState(false);
   const data = [
     { name: "Apple" },
     { name: "Amazon" },
@@ -21,29 +24,19 @@ const StdCards = () => {
     { name: "Cisco System" },
     { name: "Walmart" },
   ];
+  const handleClick = () => {
+    setOpen(true);
+  };
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          gap: "10px",
-          margin: "30px",
-          flexWrap: "wrap",
-        }}
-      >
+      <Box sx={style.MainCard}>
         {data.map((item, index) => {
           return (
             <>
-              <Card
-                sx={{
-                  maxWidth: 360,
-                  background: "#fff",
-                  color: "#000",
-                }}
-              >
-                <CardContent sx={{ fontWeight: 600, fontSize: "20px" }}>
+              <Card sx={style.card}>
+                <CardContent sx={style.cardDiv}>
                   <Box
-                    sx={{ width: "100%", display: "flex" }}
+                    sx={style.cardSubDiv}
                     component={"img"}
                     src={
                       "//vendfrontendassets.freetls.fastly.net/images/setup/set-up-outlets-v3.svg"
@@ -52,11 +45,21 @@ const StdCards = () => {
                   />
                   {item.name}
                   <Typography> company@company.com</Typography>
+                  <Button sx={style.submitBtn} onClick={handleClick}>
+                    Apply Now
+                  </Button>
                 </CardContent>
               </Card>
             </>
           );
         })}
+        <CustomModal
+          open={open}
+          setOpen={setOpen}
+          title="Confirm"
+          paragraph="Do you really want to apply?"
+          confirmButtonText="Yes, apply"
+        />
       </Box>
     </>
   );

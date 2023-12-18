@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import { style } from "./style";
 
 const Cards = () => {
   const data = [
@@ -18,41 +19,16 @@ const Cards = () => {
       container
       spacing={{ xs: 2, md: 3 }}
       columns={{ xs: 4, sm: 8, md: 12 }}
-      sx={{
-        marginTop: "5px !important",
-        width: "99% !important",
-        padding: { xs: "6px", sm: "16px" },
-      }}
+      sx={style.grid}
     >
       {data.map((item, index) => {
         return (
           <Grid item xs={2} sm={4} md={4} key={index}>
-            <Card
-              sx={{
-                minWidth: { md: "0px", lg: "275" },
-                borderRadius: "10px",
-              }}
-            >
+            <Card sx={style.card}>
               <CardContent>
-                <Typography
-                  sx={{
-                    fontSize: { xs: "17px", sm: "20px" },
-                    paddingBottom: "10px",
-                    color: "#7433ff",
-                  }}
-                >
-                  {item.name}
-                </Typography>
+                <Typography sx={style.para}>{item.name}</Typography>
 
-                <Typography
-                  variant="body2"
-                  sx={{
-                    mb: 1.5,
-                    fontSize: "24px",
-                    fontWeight: "600",
-                    color: "#7433ff",
-                  }}
-                >
+                <Typography variant="body2" sx={style.body}>
                   {item.value}
                 </Typography>
               </CardContent>

@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import test from "../../assets/sideImage.jpg";
+import test from "../../Assets/sideImage.jpg";
 import CustomButton from "../../components/Button";
 import CustomTextField from "../../components/TextField";
 import { forgotPasswordSchema } from "../../Schemas";
@@ -24,19 +24,15 @@ const ForgotPassword = () => {
     },
     validationSchema: forgotPasswordSchema,
     onSubmit: async (values) => {
-      console.log("values :", values);
       setLoading(true);
       try {
-        await sendPasswordResetEmail(auth, values.email).then((response) => {
-          console.log("res", response);
-        });
+        await sendPasswordResetEmail(auth, values.email).then((response) => {});
         formik.resetForm();
         setLoading(false);
         toast.success("Email Send Successfully");
       } catch (error) {
         setLoading(false);
         alert(error?.message.split("/")[1].replace(")", ""));
-        console.log("testing error", error);
       }
     },
   });
@@ -67,7 +63,7 @@ const ForgotPassword = () => {
           </Typography>
           <Typography variant="p" sx={style.paragraph}>
             <pre>
-              {"Enter your email to receive an email to\nreset your password"}
+              {"Enter your email to receive an email to reset your\npassword"}
             </pre>
           </Typography>
           <CustomTextField

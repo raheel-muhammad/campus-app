@@ -15,30 +15,31 @@ import { useNavigate } from "react-router-dom";
 import CustomModal from "../../components/Modal";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { style } from "./style";
 
 const Wrapper = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const [menuItems, setMenuItems] = useState([]);
   const state = useSelector((state) => state);
-  console.log("state", state);
+
   useEffect(() => {
-    updateMenuItems(state?.loginUser.userData.userrole);
+    updateMenuItems(state?.loginUser.userData.role);
   }, []);
   const navigate = useNavigate();
   const handleClick = (name) => {
     navigate(`/${name}`);
   };
-  const Logout = (name) => {
+  const Logout = () => {
     setOpen(true);
   };
   const updateMenuItems = (role) => {
     if (role === "company") {
       setMenuItems([
         { Icon: DashboardIcon, name: "Dashboard", handleClick },
+        { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: PostAddIcon, name: "Posted-Jobs", handleClick },
         { Icon: ApprovalIcon, name: "Applied-Students", handleClick },
         { Icon: BlockIcon, name: "Blocked-Students", handleClick },
-        { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: LogoutIcon, name: "Logout", handleClick: Logout },
       ]);
     } else if (role === "student") {
@@ -51,79 +52,25 @@ const Wrapper = ({ children }) => {
     } else {
       setMenuItems([
         { Icon: DashboardIcon, name: "Dashboard", handleClick },
+        { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: VerifiedUserIcon, name: "Verified-Users", handleClick },
         { Icon: GppMaybeIcon, name: "Non-Verified-Users", handleClick },
-        { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: BlockIcon, name: "Blocked-Users", handleClick },
         { Icon: LogoutIcon, name: "Logout", handleClick: Logout },
       ]);
     }
   };
-
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          background: "aliceblue",
-        }}
-      >
-        <Box
-          sx={{
-            background: "#7433FF",
-            borderBottomRightRadius: 10,
-            borderTopRightRadius: 10,
-            position: "fixed",
-            width: {
-              xs: "220px",
-              sm: "220px",
-              md: "220px",
-              lg: "220px",
-              xl: "250px",
-            },
-            display: { xs: "none", sm: "block" },
-            height: {
-              xs: "100%",
-              sm: "100%",
-              md: "100%",
-              lg: "100%",
-            },
-            cursor: "pointer",
-          }}
-        >
-          <AddHomeWorkIcon
-            sx={{
-              color: "#fff",
-              fontSize: "40px",
-              paddingLeft: "90px",
-              paddingTop: "20px",
-            }}
-          />
-          <Box
-            sx={{
-              color: "#fff",
-              fontWeight: "400",
-              paddingLeft: "60px",
-              paddingBottom: "30px",
-            }}
-          >
-            Campus-App
-          </Box>
+      <Box sx={style.drawer}>
+        <Box sx={style.drawerItems}>
+          <AddHomeWorkIcon sx={style.icon} />
+          <Box sx={style.heading}>Campus-App</Box>
           {menuItems.map((item) => {
             return (
               <>
                 <Box
-                  sx={{
-                    height: 75,
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignItems: "center",
-                    color: "#fff",
-                    fontWeight: "600",
-                    paddingLeft: "30px",
-                    gap: "15px",
-                  }}
+                  sx={style.itemNames}
                   onClick={() => item.handleClick(item.name)}
                 >
                   <item.Icon />
@@ -133,64 +80,24 @@ const Wrapper = ({ children }) => {
             );
           })}
         </Box>
-        <Box
-          sx={{
-            width: "100%",
-            marginLeft: { xs: "10px", sm: "10px", md: "10px", lg: "80px" },
-          }}
-        >
-          <Box
-            sx={{
-              background: "#7433FF",
-              height: 70,
-              borderBottomLeftRadius: 10,
-              borderTopRightRadius: "30px",
-              position: "fixed",
-              zIndex: "1",
-              marginLeft: { xs: "0px", sm: "250px" },
-              width: {
-                xs: "93%",
-                sm: "64%",
-                md: "73%",
-                lg: "75%",
-                xl: "81%",
-              },
-            }}
-          >
-            <Box
-              sx={{
-                color: "#fff",
-                fontWeight: "600",
-                paddingTop: "15px",
-                paddingLeft: "10px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+        <Box sx={style.Container}>
+          <Box sx={style.subContainer}>
+            <Box sx={style.dashboard}>
               Dashboard
-              <Box
-                sx={{
-                  paddingRight: "50px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                }}
-              >
+              <Box sx={style.dashboardItems}>
                 <NotificationAddIcon />
                 <Avatar alt="User Profile" src={""} />
               </Box>
             </Box>
           </Box>
-          <Box
-            sx={{ marginTop: "100px", marginLeft: { xs: "0px", sm: "250px" } }}
-          >
+          <Box sx={style.profile}>
             <Box>{children}</Box>
             <CustomModal
               open={open}
               setOpen={setOpen}
               title="Logout"
               paragraph="Do you really want to leave and log out?"
+              confirmButtonText="Yes, logout"
             />
           </Box>
         </Box>

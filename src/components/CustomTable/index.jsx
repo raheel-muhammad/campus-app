@@ -10,66 +10,121 @@ import TableRow from "@mui/material/TableRow";
 import Box from "@mui/material/Box";
 import ClearIcon from "@mui/icons-material/Clear";
 import DoneIcon from "@mui/icons-material/Done";
+import BlockIcon from "@mui/icons-material/Block";
 import Avatar from "@mui/material/Avatar";
-const columns = [
-  {
-    id: "profile",
-    label: "Profile",
-  },
-  { id: "email", label: "Email" },
-  { id: "name", label: "Name" },
-  {
-    id: "accept",
-    label: "Accept",
-  },
-  {
-    id: "reject",
-    label: "Reject",
-  },
-];
+import { style } from "./style";
+import { db, ref, set } from "../../Lib/Firebase";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import { useEffect } from "react";
 
-const rows = [
-  {
-    profile: <Avatar alt="User Profile" src={""} />,
-    email: "test@test.com",
-    name: "test",
-    accept: <DoneIcon sx={{ color: "green" }} />,
-    reject: <ClearIcon sx={{ color: "red" }} />,
-  },
-  {
-    profile: <Avatar alt="User Profile" src={""} />,
-    email: "test@test.com",
-    name: "test",
-    accept: <DoneIcon sx={{ color: "green" }} />,
-    reject: <ClearIcon sx={{ color: "red" }} />,
-  },
-  {
-    profile: <Avatar alt="User Profile" src={""} />,
-    email: "test@test.com",
-    name: "test",
-    accept: <DoneIcon sx={{ color: "green" }} />,
-    reject: <ClearIcon sx={{ color: "red" }} />,
-  },
-  {
-    profile: <Avatar alt="User Profile" src={""} />,
-    email: "test@test.com",
-    name: "test",
-    accept: <DoneIcon sx={{ color: "green" }} />,
-    reject: <ClearIcon sx={{ color: "red" }} />,
-  },
-  {
-    profile: <Avatar alt="User Profile" src={""} />,
-    email: "test@test.com",
-    name: "test",
-    accept: <DoneIcon sx={{ color: "green" }} />,
-    reject: <ClearIcon sx={{ color: "red" }} />,
-  },
-];
+export default function StickyHeadTable({ data, setData, check }) {
+  const [columns, setColumns] = React.useState([]);
+  const handleClick = (index) => {
+    let tempData = [...data];
+    tempData[index].isVerified = true;
+    set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
+    tempData = tempData?.filter((item) => item !== tempData[index]);
+    setData(tempData);
+  };
+  const handleBlocked = (index) => {
+    let tempData = [...data];
+    tempData[index].isBlock = true;
+    set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
+    tempData = tempData?.filter((item) => item !== tempData[index]);
+    setData(tempData);
+  };
+  const handleReject = (index) => {
+    let tempData = [...data];
+    tempData[index].isReject = true;
+    set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
+    tempData = tempData?.filter((item) => item !== tempData[index]);
+    setData(tempData);
+  };
+  const handleUnblock = (index) => {
+    let tempData = [...data];
+    tempData[index].isBlock = false;
+    set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
+    tempData = tempData?.filter((item) => item !== tempData[index]);
+    setData(tempData);
+  };
 
-export default function StickyHeadTable() {
+  useEffect(() => {
+    let tempCol = [...columns];
+    tempCol.push(
+      {
+        id: "profile",
+        label: "Profile",
+      },
+      { id: "email", label: "Email" },
+      { id: "name", label: "Name" }
+    );
+    let nvu = [
+      {
+        id: "accept",
+        label: "Accept",
+      },
+      {
+        id: "reject",
+        label: "Reject",
+      },
+      {
+        id: "block",
+        label: "Block",
+      },
+    ];
+    let vu = [
+      {
+        id: "unblock",
+        label: "Unblock",
+      },
+      {
+        id: "block",
+        label: "Block",
+      },
+    ];
+    let bu = [
+      {
+        id: "unblock",
+        label: "Unblock",
+      },
+    ];
+    if (check === "nvu") {
+      tempCol.push(...nvu);
+    } else if (check === "vu") {
+      tempCol.push(...vu);
+    } else if (check === "bu") {
+      tempCol.push(...bu);
+    }
+    setColumns(tempCol);
+  }, []);
+
+  let rows = [];
+  data?.map((item, index) => {
+    rows.push({
+      profile: <Avatar alt="User Profile" src={""} />,
+      email: item?.email,
+      name: item?.username,
+      accept: (
+        <DoneIcon sx={{ color: "green" }} onClick={() => handleClick(index)} />
+      ),
+      reject: (
+        <ClearIcon sx={{ color: "red" }} onClick={() => handleReject(index)} />
+      ),
+      block: (
+        <BlockIcon sx={{ color: "red" }} onClick={() => handleBlocked(index)} />
+      ),
+      unblock: (
+        <LockOpenIcon
+          sx={{ color: "green" }}
+          onClick={() => handleUnblock(index)}
+        />
+      ),
+    });
+  });
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
+  console.log("rows:", rows);
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -81,23 +136,8 @@ export default function StickyHeadTable() {
 
   return (
     <>
-      <Paper
-        sx={{
-          width: "95%",
-          overflow: "hidden",
-          borderRadius: "10px",
-          height: "520px",
-        }}
-      >
-        <Box
-          sx={{
-            background: "#fff",
-            color: "#7433FF",
-            padding: "10px",
-            fontSize: "24px",
-            fontWeight: "600",
-          }}
-        >
+      <Paper sx={style.Container}>
+        <Box component={"div"} sx={style.ApprovalDiv}>
           Recent Approvals
         </Box>
         <TableContainer>
@@ -106,12 +146,7 @@ export default function StickyHeadTable() {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
-                    sx={{
-                      fontWeight: "600",
-                      fontSize: { xs: "12px", sm: "16px" },
-                      textAlign: { xs: "center", sm: "center", md: "left" },
-                      padding: { xs: "4px", sm: "10px", md: "16px" },
-                    }}
+                    sx={style.TableCell}
                     key={column.id}
                     align={column.align}
                   >
@@ -148,7 +183,7 @@ export default function StickyHeadTable() {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 25, 50]}
+          rowsPerPageOptions={[10, 25, 50]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}

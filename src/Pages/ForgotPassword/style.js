@@ -27,8 +27,11 @@ export const style = {
     fontWeight: "700",
   },
   paragraph: {
-    marginBottom: "30px",
+    marginBottom: "10px",
     whiteSpace: "",
+    fontWeight: "600",
+    fontSize: "16px",
+    fontStyle: "italic",
   },
   email: {
     marginBottom: 5,

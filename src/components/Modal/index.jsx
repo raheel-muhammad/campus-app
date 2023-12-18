@@ -8,7 +8,13 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { style } from "./style";
 
-const CustomModal = ({ open, setOpen, title, paragraph }) => {
+const CustomModal = ({
+  open,
+  setOpen,
+  title,
+  paragraph,
+  confirmButtonText,
+}) => {
   const handleClose = () => {
     setOpen(false);
   };
@@ -36,20 +42,14 @@ const CustomModal = ({ open, setOpen, title, paragraph }) => {
               id="transition-modal-title"
               variant="h6"
               component="h2"
-              sx={{ fontWeight: "600" }}
+              sx={style.subContainer}
             >
               {title}
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               {paragraph}
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                gap: "8px",
-                marginTop: "30px",
-              }}
-            >
+            <Box sx={style.modal}>
               <Button
                 component={"button"}
                 sx={[style.button, style.cancelButton]}
@@ -62,7 +62,7 @@ const CustomModal = ({ open, setOpen, title, paragraph }) => {
                 sx={[style.button, style.confirmButton]}
                 onClick={handleLogout}
               >
-                Yes,LogOut
+                {confirmButtonText}
               </Button>
             </Box>
           </Box>

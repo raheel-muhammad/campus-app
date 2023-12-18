@@ -42,6 +42,7 @@ export const style = {
     letterSpacing: "space-between",
     marginBottom: 5,
     width: { xs: "200px", sm: "100%" },
+    gap: "150px",
   },
   paragraph: {
     mr: 2,

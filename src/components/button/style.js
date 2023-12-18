@@ -3,6 +3,6 @@ export const style = {
     borderRadius: 50,
     backgroundColor: "#7433FF",
     padding: "10px",
-    width: "50%",
+    width: "30%",
   },
 };

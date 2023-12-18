@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 import CustomTextField from "../../components/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import test from "../../assets/sideImage.jpg";
+import test from "../../Assets/sideImage.jpg";
 import { style } from "./style";
 import CustomButton from "../../components/Button";
 import { useFormik } from "formik";
@@ -18,7 +18,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { db, ref, set } from "../../Lib/Firebase";
-import { getUserData } from "../../redux/action";
+import { getUserData } from "../../redux/Action";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
@@ -39,7 +39,6 @@ const SignUp = () => {
     },
     validationSchema: signUpSchema,
     onSubmit: async (values) => {
-      console.log("values", values);
       setLoading(true);
       try {
         await createUserWithEmailAndPassword(
@@ -50,8 +49,15 @@ const SignUp = () => {
           {
             set(ref(db, "users/" + res.user.uid), {
               username: values.name,
-              usermail: values.email,
-              userrole: values.role,
+              email: values.email,
+              role: values?.role,
+              gender: "",
+              age: "",
+              education: "",
+              isVerified: false,
+              isBlock: false,
+              userId: res.user.uid,
+              isReject: false,
             });
           }
           formik.resetForm();
@@ -60,8 +66,8 @@ const SignUp = () => {
             getUserData({
               userId: res.user.uid,
               username: values.name,
-              usermail: values.email,
-              userrole: values.role,
+              email: values.email,
+              role: values?.role,
             })
           );
           toast.success("Registered Successfully");
@@ -69,7 +75,7 @@ const SignUp = () => {
         });
       } catch (error) {
         toast.error(error?.message.split("/")[1].replace(")", ""));
-        console.log("error", error);
+
         setLoading(false);
       }
     },
@@ -108,7 +114,7 @@ const SignUp = () => {
           <Typography variant="p" sx={style.paragraphTwo}>
             Register your account
           </Typography>
-          {formik.values.role === "student" && "iiiiiiiisdfdsfdsfdsf"}
+          {formik.values.role === "student"}
           <CustomTextField
             label="Name"
             name="name"

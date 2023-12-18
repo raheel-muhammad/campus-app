@@ -1,10 +1,10 @@
 import React from "react";
 import Wrapper from "../Wrapper";
-import CustomCards from "../../components/CustomCards";
+import CustomTable from "../../components/CustomTable";
 const AppliedStudents = () => {
   return (
     <Wrapper>
-      <CustomCards />
+      <CustomTable />
     </Wrapper>
   );
 };

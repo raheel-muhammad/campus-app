@@ -24,7 +24,7 @@ const dataset = [
     postedjobs: 52,
     appliedjobs: 78,
     totalusers: 28,
-    month: "Fev",
+    month: "Feb",
   },
   {
     totaljobs: 47,

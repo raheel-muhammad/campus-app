@@ -10,7 +10,7 @@ import CustomTextField from "../../components/TextField";
 import CustomButton from "../../components/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import test from "../../assets/sideImage.jpg";
+import test from "../../Assets/sideImage.jpg";
 import { useFormik } from "formik";
 import { signInSchema } from "../../Schemas";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -30,7 +30,6 @@ const Login = () => {
     },
     validationSchema: signInSchema,
     onSubmit: async (values) => {
-      console.log("values", values);
       setLoading(true);
       try {
         await signInWithEmailAndPassword(auth, values.email, values.password);
@@ -38,7 +37,6 @@ const Login = () => {
       } catch (error) {
         setLoading(false);
         alert(error?.message.split("/")[1].replace(")", ""));
-        console.log("testing error", error);
       }
     },
   });
@@ -57,7 +55,6 @@ const Login = () => {
       )
     );
   };
-  console.log("formik", formik.values);
   return (
     <Box component={"div"} sx={style.border}>
       <Box src={test} component={"img"} alt="Mountain" sx={style.image} />

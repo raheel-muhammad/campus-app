@@ -10,3 +10,9 @@ export const logOutUser = () => {
     type: "LOG_OUT_USER",
   };
 };
+export const getAllUserData = (data) => {
+  return {
+    type: "GET_ALL_USER_DATA",
+    payload: data,
+  };
+};
