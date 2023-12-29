@@ -33,7 +33,6 @@ const App = () => {
             onValue(ref(db, "posts/"), (snapshot) => {
               const allJobs = snapshot.val();
               dispatch(getAllJobs(Object.values(allJobs)));
-              console.log("jobs", Object.values(allJobs));
             });
           }
         });

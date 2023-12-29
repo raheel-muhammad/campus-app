@@ -12,7 +12,12 @@ const Cards = () => {
   const allJobsArray = allJobs.flatMap((item, index) => {
     return Object.values(item);
   });
-
+  const availableJobs = allJobsArray.filter(
+    (job) => !job?.appliedStudents?.find((el) => el == userData.userId)
+  );
+  const appliedJobs = allJobsArray.filter((job) =>
+    job?.appliedStudents?.find((el) => el == userData.userId)
+  );
   const index =
     userData.role == "admin" ? 0 : userData.role == "company" ? 1 : 2;
   const data = [
@@ -28,8 +33,9 @@ const Cards = () => {
       { name: "Applied Students", value: 234 },
     ],
     [
-      { name: "Applied Jobs", value: 545 },
-      { name: "Total Jobs", value: allJobsArray.length },
+      { name: "Total Jobs", value: allJobsArray?.length || 0 },
+      { name: "Available Jobs", value: availableJobs?.length || 0 },
+      { name: "Applied Jobs", value: appliedJobs?.length || 0 },
     ],
   ];
   return (

@@ -11,7 +11,6 @@ import { style } from "./style";
 
 const Profile = () => {
   const state = useSelector((data) => data?.loginUser?.userData);
-  console.log("redux:", state);
   const formik = useFormik({
     initialValues: {
       gender: state?.gender,
