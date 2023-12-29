@@ -1,16 +1,14 @@
 import { TextField } from "@mui/material";
-
 import React from "react";
 import { style } from "./style";
 
-const CustomTextField = ({ sx, label, ...props }) => {
+const CustomTextField = ({ sx, ...props }) => {
   return (
     <TextField
       id="outlined-basic"
-      sx={{ ...style.name, ...sx }}
       variant="outlined"
-      label={label}
       {...props}
+      sx={{ ...style.name, ...sx }}
     />
   );
 };

@@ -4,13 +4,12 @@ export const style = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "50%",
     padding: "16px",
     width: { xs: "100%", sm: "50%" },
   },
   border: {
     display: "flex",
-    border: "50px solid  #B99AFF",
+    border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff,  #69477d) 1",
     borderImageSlice: 1,
     height: "869px",
@@ -24,11 +23,12 @@ export const style = {
   rightSide: {
     display: "flex",
     flexDirection: "column",
+    width: "70%",
   },
   signInDiv: {
     display: "flex",
     justifyContent: "flex-end",
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   paragraph: {
     mr: 2,
@@ -36,26 +36,28 @@ export const style = {
     color: "darkgrey",
   },
   heading: {
-    fontWeight: "700",
+    fontWeight: { xs: "400", sm: "700", md: "700", lg: "700" },
+    fontSize: { xs: "1.5rem" },
   },
   paragraphTwo: {
-    marginBottom: 5,
     color: "darkgrey",
+    marginBottom: { xs: "20px", sm: "20px", md: "20px", lg: "20px" },
+    marginTop: { xs: "20px", sm: "20px", md: "20px", lg: "20px" },
   },
   name: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   email: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   role: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   password: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   confirm: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   buttonTwo: {
     borderRadius: 50,

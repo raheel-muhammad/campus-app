@@ -9,7 +9,7 @@ export const style = {
   },
   border: {
     display: "flex",
-    border: "50px solid #B99AFF",
+    border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff, #69477d) 1",
     borderImageSlice: 1,
     height: "869px",
@@ -27,8 +27,11 @@ export const style = {
     fontWeight: "700",
   },
   paragraph: {
-    marginBottom: "30px",
+    marginBottom: "10px",
     whiteSpace: "",
+    fontWeight: "600",
+    fontSize: "16px",
+    fontStyle: "italic",
   },
   email: {
     marginBottom: 5,
@@ -44,7 +47,8 @@ export const style = {
   paragraphThree: {
     mr: 2,
     marginTop: "10px",
-    color: "black",
+    color: "#7433ff",
     textDecoration: "underline",
+    cursor: "pointer",
   },
 };

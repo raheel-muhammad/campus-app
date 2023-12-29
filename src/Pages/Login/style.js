@@ -10,7 +10,7 @@ export const style = {
   },
   border: {
     display: "flex",
-    border: "50px solid #B99AFF",
+    border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff,  #69477d) 1",
     borderImageSlice: 1,
     height: "869px",
@@ -28,28 +28,32 @@ export const style = {
   },
   signIn: {
     fontWeight: "700",
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   email: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   password: {
-    marginBottom: 5,
+    marginBottom: 2.5,
   },
   forgotPassword: {
     display: "flex",
     flexDirection: "row",
     letterSpacing: "space-between",
     marginBottom: 5,
+    width: { xs: "200px", sm: "100%" },
+    gap: "150px",
   },
   paragraph: {
     mr: 2,
     marginTop: "10px",
     color: "darkgrey",
     textDecoration: "underline",
+    cursor: "pointer",
   },
   paragraphDiv: {
     marginTop: "20px",
+    width: { xs: "200px", sm: "100%" },
   },
   paragraphTwo: {
     mr: 2,
@@ -59,7 +63,8 @@ export const style = {
   paragraphThree: {
     mr: 2,
     marginTop: "10px",
-    color: "black",
+    color: "#7433ff",
     textDecoration: "underline",
+    cursor: "pointer",
   },
 };
