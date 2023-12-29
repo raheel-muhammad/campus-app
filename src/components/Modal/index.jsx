@@ -14,14 +14,13 @@ const CustomModal = ({
   title,
   paragraph,
   confirmButtonText,
+  onClick,
 }) => {
   const handleClose = () => {
     setOpen(false);
   };
   const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate("/signIn");
-  };
+
   return (
     <div>
       <Modal
@@ -60,7 +59,7 @@ const CustomModal = ({
               <Button
                 component={"button"}
                 sx={[style.button, style.confirmButton]}
-                onClick={handleLogout}
+                onClick={onClick}
               >
                 {confirmButtonText}
               </Button>

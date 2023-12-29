@@ -11,6 +11,7 @@ import ApprovalIcon from "@mui/icons-material/Approval";
 import Avatar from "@mui/material/Avatar";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import WorkIcon from "@mui/icons-material/Work";
 import { useNavigate } from "react-router-dom";
 import CustomModal from "../../components/Modal";
 import { useState, useEffect } from "react";
@@ -29,6 +30,9 @@ const Wrapper = ({ children }) => {
   const handleClick = (name) => {
     navigate(`/${name}`);
   };
+  const handleLogout = () => {
+    navigate("/signIn");
+  };
   const Logout = () => {
     setOpen(true);
   };
@@ -38,14 +42,15 @@ const Wrapper = ({ children }) => {
         { Icon: DashboardIcon, name: "Dashboard", handleClick },
         { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: PostAddIcon, name: "Posted-Jobs", handleClick },
+        { Icon: PostAddIcon, name: "Post-Jobs", handleClick },
         { Icon: ApprovalIcon, name: "Applied-Students", handleClick },
-        { Icon: BlockIcon, name: "Blocked-Students", handleClick },
         { Icon: LogoutIcon, name: "Logout", handleClick: Logout },
       ]);
     } else if (role === "student") {
       setMenuItems([
         { Icon: DashboardIcon, name: "Dashboard", handleClick },
         { Icon: AccountCircleIcon, name: "Profile", handleClick },
+        { Icon: WorkIcon, name: "All-Jobs", handleClick },
         { Icon: ApprovalIcon, name: "Applied-Jobs", handleClick },
         { Icon: LogoutIcon, name: "Logout", handleClick: Logout },
       ]);
@@ -98,6 +103,7 @@ const Wrapper = ({ children }) => {
               title="Logout"
               paragraph="Do you really want to leave and log out?"
               confirmButtonText="Yes, logout"
+              onClick={handleLogout}
             />
           </Box>
         </Box>

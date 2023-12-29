@@ -16,3 +16,15 @@ export const getAllUserData = (data) => {
     payload: data,
   };
 };
+export const getCompanyData = (data) => {
+  return {
+    type: "GET_COMPANY_DATA",
+    payload: data,
+  };
+};
+export const getAllJobs = (data) => {
+  return {
+    type: "GET_ALL_JOBS",
+    payload: data,
+  };
+};

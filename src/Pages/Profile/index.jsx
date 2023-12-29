@@ -38,6 +38,7 @@ const Profile = () => {
         <Box sx={style.form} component={"form"} onSubmit={formik.handleSubmit}>
           <Box sx={style.profileContainer}>
             <Avatar alt="User Profile" src={""} sx={style.profile} />
+            <Button>Upload Image</Button>
           </Box>
           <CustomTextField
             label="Name"

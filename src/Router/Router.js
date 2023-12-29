@@ -1,17 +1,17 @@
-import react from "react";
 import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
 import { Route, Routes } from "react-router-dom";
 import AdminDashboard from "../components/AdminDashboard";
 import VerifiedUser from "../Pages/VerifiedUser";
 import ForgotPassword from "../Pages/ForgotPassword";
-import BlockedStudents from "../Pages/BlockedStudents";
 import AppliedStudents from "../Pages/AppliedStudents";
 import PostedJobs from "../Pages/PostedJobs";
 import AppliedJobs from "../Pages/AppliedJobs";
 import BlockedUsers from "../Pages/BlockedUser";
 import Profile from "../Pages/Profile";
 import NonVerifiedUsers from "../Pages/NonVerifiedUser";
+import PostJobs from "../components/PostJobs";
+import AllJobs from "../components/AllJobs";
 
 const Router = () => {
   return (
@@ -28,8 +28,9 @@ const Router = () => {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Applied-Jobs" element={<AppliedJobs />} />
         <Route path="/Posted-Jobs" element={<PostedJobs />} />
+        <Route path="/Post-Jobs" element={<PostJobs />} />
         <Route path="/Applied-Students" element={<AppliedStudents />} />
-        <Route path="/Blocked-Students" element={<BlockedStudents />} />
+        <Route path="/All-jobs" element={<AllJobs />} />
       </>
     </Routes>
   );

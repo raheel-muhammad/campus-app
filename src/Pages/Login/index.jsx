@@ -15,6 +15,7 @@ import { useFormik } from "formik";
 import { signInSchema } from "../../Schemas";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);

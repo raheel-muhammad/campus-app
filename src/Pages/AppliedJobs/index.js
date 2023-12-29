@@ -4,7 +4,8 @@ import CompanyCards from "../../components/CompanyCards";
 const AppliedJobs = () => {
   return (
     <Wrapper>
-      <CompanyCards />
+      {" "}
+      <CompanyCards />{" "}
     </Wrapper>
   );
 };
