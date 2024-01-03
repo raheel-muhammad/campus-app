@@ -28,3 +28,9 @@ export const getAllJobs = (data) => {
     payload: data,
   };
 };
+export const getAppliedStudents = (data) => {
+  return {
+    type: "GET_APPLIED_STUDENTS",
+    payload: data,
+  };
+};

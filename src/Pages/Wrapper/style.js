@@ -50,7 +50,6 @@ export const style = {
   Container: {
     width: "100%",
     marginLeft: { xs: "10px", sm: "10px", md: "10px", lg: "80px" },
-    height: "100vh",
   },
   subContainer: {
     background: "#7433FF",

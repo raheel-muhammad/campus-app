@@ -11,6 +11,7 @@ import { style } from "./style";
 
 const Profile = () => {
   const state = useSelector((data) => data?.loginUser?.userData);
+  console.log(state, "state");
   const formik = useFormik({
     initialValues: {
       gender: state?.gender,
@@ -72,6 +73,7 @@ const Profile = () => {
             sx={{ mb: formik.errors.gender ? 1.5 : 2.5 }}
             value={formik.values.gender}
             onChange={formik.handleChange}
+            disabled
           />
           {formik.errors.gender && formik.touched.gender ? (
             <p style={{ marginTop: "2px", marginBottom: "16px", color: "red" }}>

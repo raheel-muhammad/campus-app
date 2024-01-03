@@ -3,6 +3,7 @@ export const style = {
     maxWidth: 360,
     background: "#fff",
     color: "#000",
+    width: "300px",
   },
   cardDiv: { fontWeight: 600, fontSize: "20px" },
   cardSubDiv: { width: "100%", display: "flex" },

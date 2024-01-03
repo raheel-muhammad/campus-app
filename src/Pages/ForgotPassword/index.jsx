@@ -62,9 +62,7 @@ const ForgotPassword = () => {
             Forgot Password
           </Typography>
           <Typography variant="p" sx={style.paragraph}>
-            <pre>
-              {"Enter your email to receive an email to reset your\npassword"}
-            </pre>
+            Enter your email to receive an email to reset your password
           </Typography>
           <CustomTextField
             label="Email"

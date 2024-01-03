@@ -12,12 +12,10 @@ export const style = {
     border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff,  #69477d) 1",
     borderImageSlice: 1,
-    height: "869px",
-    overflow: "auto",
+    height: "calc(100vh - 40px)",
   },
   image: {
     width: "50%",
-    height: "100%",
     display: { xs: "none", sm: "block", md: "block" },
   },
   rightSide: {

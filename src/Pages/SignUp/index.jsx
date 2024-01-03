@@ -46,20 +46,19 @@ const SignUp = () => {
           values.email,
           values.password
         ).then(async (res) => {
-          {
-            set(ref(db, "users/" + res.user.uid), {
-              username: values.name,
-              email: values.email,
-              role: values?.role,
-              gender: "",
-              age: "",
-              education: "",
-              isVerified: false,
-              isBlock: false,
-              userId: res.user.uid,
-              isReject: false,
-            });
-          }
+          console.log("res", res);
+          set(ref(db, "users/" + res.user.uid), {
+            username: values.name,
+            email: values.email,
+            role: values?.role,
+            gender: "",
+            age: "",
+            education: "",
+            isVerified: false,
+            isBlock: false,
+            userId: res.user.uid,
+            isReject: false,
+          });
           formik.resetForm();
           setLoading(false);
           dispatch(

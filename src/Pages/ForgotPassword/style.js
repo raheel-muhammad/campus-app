@@ -4,16 +4,15 @@ export const style = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    padding: "16px",
     width: { xs: "100%", sm: "50%" },
+    padding: "16px",
   },
   border: {
     display: "flex",
     border: "20px solid #B99AFF",
     borderImage: "linear-gradient(to right, #b99aff, #69477d) 1",
     borderImageSlice: 1,
-    height: "869px",
-    overflow: "auto",
+    height: "calc(100vh - 40px)",
   },
   image: {
     width: "50%",
@@ -22,16 +21,19 @@ export const style = {
   rightSide: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
+    justifyContent: "center",
   },
   ForgotPassword: {
-    fontWeight: "700",
+    fontWeight: "600",
   },
   paragraph: {
     marginBottom: "10px",
     whiteSpace: "",
-    fontWeight: "600",
-    fontSize: "16px",
+    fontWeight: "400",
+    fontSize: "12px",
     fontStyle: "italic",
+    width: "100%",
   },
   email: {
     marginBottom: 5,

@@ -3,6 +3,7 @@ const initialState = {
   allUsers: [],
   allCompanies: [],
   allJobs: [],
+  appliedStudents: [],
 };
 const loginUser = (state = initialState, action) => {
   switch (action.type) {
@@ -14,6 +15,9 @@ const loginUser = (state = initialState, action) => {
       return { ...state, allCompanies: action.payload };
     case "GET_ALL_JOBS":
       return { ...state, allJobs: action.payload };
+    case "GET_APPLIED_STUDENTS":
+      console.log("students", state.appliedStudents);
+      return { ...state, appliedStudents: action.payload };
     case "LOG_OUT_USER":
       return initialState;
     default:

@@ -1,3 +1,4 @@
+import { getAuth, signOut } from "firebase/auth";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
@@ -15,13 +16,16 @@ import WorkIcon from "@mui/icons-material/Work";
 import { useNavigate } from "react-router-dom";
 import CustomModal from "../../components/Modal";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { style } from "./style";
+import { logOutUser } from "../../redux/Action";
+import { async } from "@firebase/util";
 
 const Wrapper = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const [menuItems, setMenuItems] = useState([]);
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     updateMenuItems(state?.loginUser.userData.role);
@@ -30,8 +34,16 @@ const Wrapper = ({ children }) => {
   const handleClick = (name) => {
     navigate(`/${name}`);
   };
-  const handleLogout = () => {
-    navigate("/signIn");
+  const handleLogout = async () => {
+    const auth = getAuth();
+    await signOut(auth)
+      .then(() => {
+        dispatch(logOutUser());
+        navigate("/signIn");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
   const Logout = () => {
     setOpen(true);

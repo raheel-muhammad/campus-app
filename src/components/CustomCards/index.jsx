@@ -18,19 +18,21 @@ const Cards = () => {
   const appliedJobs = allJobsArray.filter((job) =>
     job?.appliedStudents?.find((el) => el == userData.userId)
   );
+  const PostedJobs = allJobsArray.filter((job) =>
+    job?.appliedStudents?.find((el) => el == userData.userId)
+  );
   const index =
     userData.role == "admin" ? 0 : userData.role == "company" ? 1 : 2;
   const data = [
     [
       { name: "Total Jobs", value: allJobsArray.length },
-      { name: "Applied Jobs", value: 545 },
       { name: "Verified-Users", value: 5342 },
       { name: "Non-Verified-Users", value: 4321 },
       { name: "Blocked-Users", value: 33 },
     ],
     [
-      { name: "Posted Jobs", value: 234 },
-      { name: "Applied Students", value: 234 },
+      { name: "Posted Jobs", value: PostedJobs?.length || 0 },
+      { name: "Applied Students", value: 23 },
     ],
     [
       { name: "Total Jobs", value: allJobsArray?.length || 0 },

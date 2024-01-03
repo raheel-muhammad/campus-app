@@ -7,10 +7,13 @@ import Wrapper from "../../Pages/Wrapper";
 import { useSelector } from "react-redux";
 import { push, ref, set } from "firebase/database";
 import { db } from "../../Lib/Firebase";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const PostJobs = () => {
   const state = useSelector((state) => state);
   const id = state?.loginUser?.userData?.userId;
   const companyName = state?.loginUser?.userData?.username;
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -31,12 +34,22 @@ const PostJobs = () => {
           id,
           companyName,
         });
-      } catch (err) {
-        console.log(err, "error");
+        formik.resetForm();
+        toast.success("Job-Post Successfully");
+        navigate("/Posted-Jobs");
+      } catch (error) {
+        toast.error(error?.message.split("/")[1].replace(")", ""));
       }
     },
   });
-
+  const formikValidation = () => {
+    return !!(
+      Object.values(formik?.errors).some((error) => !!error) ||
+      Object.values(formik?.values).some((value) =>
+        typeof value === "boolean" ? !value : !value?.length
+      )
+    );
+  };
   return (
     <>
       <Wrapper>
@@ -108,7 +121,11 @@ const PostJobs = () => {
               </p>
             ) : null}
             <Box sx={style.buttonDiv}>
-              <Button type="submit" sx={style.button}>
+              <Button
+                type="submit"
+                sx={style.button}
+                disabled={formikValidation()}
+              >
                 {" "}
                 Post
               </Button>
