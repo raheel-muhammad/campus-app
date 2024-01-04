@@ -42,10 +42,10 @@ const Login = () => {
     },
   });
   const handleSignUp = () => {
-    navigate("/signup");
+    navigate("/signUp");
   };
   const handleForgotPass = () => {
-    navigate("forgotPassword");
+    navigate("/forgotPassword");
   };
 
   const formikValidation = () => {
@@ -108,8 +108,7 @@ const Login = () => {
           ) : null}
           <FormGroup sx={style.forgotPassword}>
             <FormControlLabel
-              required
-              control={<Checkbox />}
+              control={<Checkbox defaultChecked />}
               label="Remember me"
             />
             <Typography

@@ -15,7 +15,7 @@ import AllJobs from "../components/AllJobs";
 import { useSelector } from "react-redux";
 const Router = () => {
   const { role, userId } = useSelector((state) => state?.loginUser?.userData);
-  console.log("id", userId);
+
   if (!userId)
     return (
       <Routes>
@@ -27,7 +27,7 @@ const Router = () => {
       </Routes>
     );
 
-  if (role === "admin")
+  if (userId && role === "admin")
     return (
       <Routes>
         <Route path="/Dashboard" element={<AdminDashboard />} />
@@ -37,7 +37,7 @@ const Router = () => {
         <Route path="/Profile" element={<Profile />} />
       </Routes>
     );
-  if (role === "company")
+  if (userId && role === "company")
     return (
       <Routes>
         <Route path="/Dashboard" element={<AdminDashboard />} />
@@ -47,7 +47,7 @@ const Router = () => {
         <Route path="/Profile" element={<Profile />} />
       </Routes>
     );
-  if (role === "student")
+  if (userId && role === "student")
     return (
       <Routes>
         <Route path="/Dashboard" element={<AdminDashboard />} />

@@ -89,7 +89,7 @@ const SignUp = () => {
   };
 
   const handleSignIn = () => {
-    navigate("/signin");
+    navigate("/signIn");
   };
 
   return (

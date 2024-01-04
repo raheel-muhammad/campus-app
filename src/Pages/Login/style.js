@@ -42,7 +42,7 @@ export const style = {
   },
   paragraph: {
     mr: 2,
-    marginTop: "10px",
+    marginTop: "9px",
     color: "darkgrey",
     textDecoration: "underline",
     cursor: "pointer",
