@@ -40,16 +40,16 @@ const JobCard = ({ item }) => {
             alt="Mountain"
           />
           <Typography sx={{ fontWeight: "600", marginBottom: "10px" }}>
-            {item.jobTitle}
+            Job Title: {item.jobTitle}
           </Typography>
           <Typography sx={{ marginBottom: "10px" }}>
-            {item.jobDescription}
+            Job Description: {item.jobDescription}
           </Typography>
           <Typography sx={{ marginBottom: "10px" }}>
-            {item.minimumGpaRequired}
+            MinimumGpaRequired: {item.minimumGpaRequired}
           </Typography>
           <Typography sx={{ marginBottom: "10px" }}>
-            {item.minimumSalary}
+            MinimumSalary: {item.minimumSalary}
           </Typography>
           {!item?.appliedStudents?.find((el) => el == userId) && (
             <Button sx={style.submitBtn} onClick={() => setOpen(true)}>

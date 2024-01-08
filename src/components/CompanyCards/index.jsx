@@ -8,6 +8,7 @@ const StdCards = ({ data = [] }) => {
   return (
     <Box sx={style.MainCard}>
       {data.map((item, index) => {
+        console.log("data", data);
         return <JobCard item={item} />;
       })}
     </Box>
