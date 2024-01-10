@@ -76,7 +76,7 @@ const App = () => {
   if (!loading)
     return (
       <ThemeProvider theme={theme}>
-        {/* <Toaster position="top-right" reverseOrder={false} /> */}
+        <Toaster position="top-right" reverseOrder={false} />
         <Router />
       </ThemeProvider>
     );

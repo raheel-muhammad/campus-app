@@ -17,7 +17,7 @@ import { db, ref, set } from "../../Lib/Firebase";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useEffect } from "react";
 
-export default function StickyHeadTable({ data, setData, check }) {
+export default function StickyHeadTable({ data, setData, check, name }) {
   const [columns, setColumns] = React.useState([]);
   const handleClick = (index) => {
     let tempData = [...data];
@@ -67,16 +67,8 @@ export default function StickyHeadTable({ data, setData, check }) {
         id: "reject",
         label: "Reject",
       },
-      {
-        id: "block",
-        label: "Block",
-      },
     ];
     let vu = [
-      {
-        id: "unblock",
-        label: "Unblock",
-      },
       {
         id: "block",
         label: "Block",
@@ -137,7 +129,7 @@ export default function StickyHeadTable({ data, setData, check }) {
     <>
       <Paper sx={style.Container}>
         <Box component={"div"} sx={style.ApprovalDiv}>
-          Recent Approvals
+          {name}
         </Box>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">

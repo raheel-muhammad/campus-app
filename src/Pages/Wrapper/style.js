@@ -2,7 +2,8 @@ export const style = {
   drawer: {
     display: "flex",
     flexDirection: "row",
-    background: "aliceblue",
+    background: "#f0f8ff",
+    height: "100vh",
   },
   drawerItems: {
     background: "#7433FF",

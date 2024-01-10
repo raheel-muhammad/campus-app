@@ -16,6 +16,7 @@ const NonVerifiedUsers = () => {
         data={nonVerifiedUser}
         setData={setNonVerifiedUser}
         check={"nvu"}
+        name="Non-Verified-Users"
       />
     </Wrapper>
   );

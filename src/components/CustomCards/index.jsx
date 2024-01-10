@@ -5,30 +5,40 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { style } from "./style";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 const Cards = () => {
-  const { allJobs, userData } = useSelector((state) => state?.loginUser);
+  const { allJobs, userData, allUsers } = useSelector(
+    (state) => state?.loginUser
+  );
   const allJobsArray = allJobs.flatMap((item, index) => {
     return Object.values(item);
   });
   const availableJobs = allJobsArray.filter(
-    (job) => !job?.appliedStudents?.find((el) => el == userData.userId)
+    (job) => !job?.appliedStudents?.find((el) => el === userData.userId)
   );
   const appliedJobs = allJobsArray.filter((job) =>
-    job?.appliedStudents?.find((el) => el == userData.userId)
+    job?.appliedStudents?.find((el) => el === userData.userId)
   );
   const PostedJobs = allJobsArray.filter((job) =>
-    job?.appliedStudents?.find((el) => el == userData.userId)
+    job?.appliedStudents?.find((el) => el === userData.userId)
   );
+  const NonVerifiedUser = allUsers.filter(
+    (item) =>
+      !item.isVerified && !item.isBlock && !item.isReject && !item.isUnblock
+  );
+  const VerifiedUser = allUsers.filter(
+    (item) => item.isVerified && !item.isBlock
+  );
+  const BlockedUser = allUsers.filter((item) => item.isBlock);
+
   const index =
-    userData.role == "admin" ? 0 : userData.role == "company" ? 1 : 2;
+    userData.role === "admin" ? 0 : userData.role === "company" ? 1 : 2;
   const data = [
     [
-      { name: "Total Jobs", value: allJobsArray.length },
-      { name: "Verified-Users", value: 5342 },
-      { name: "Non-Verified-Users", value: 4321 },
-      { name: "Blocked-Users", value: 33 },
+      { name: "Total Jobs", value: allJobsArray?.length },
+      { name: "Verified-Users", value: VerifiedUser?.length },
+      { name: "Non-Verified-Users", value: NonVerifiedUser?.length },
+      { name: "Blocked-Users", value: BlockedUser?.length },
     ],
     [
       { name: "Posted Jobs", value: PostedJobs?.length || 0 },

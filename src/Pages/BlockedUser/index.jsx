@@ -13,6 +13,7 @@ const BlockedUsers = () => {
         data={blockedUser}
         setData={setBlockedUser}
         check={"bu"}
+        name="Blocked-Users"
       />
     </Wrapper>
   );

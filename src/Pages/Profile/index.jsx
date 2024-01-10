@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { update } from "firebase/database";
 import { db, ref } from "../../Lib/Firebase";
 import { style } from "./style";
+import GenderField from "../../components/GenderField";
 
 const Profile = () => {
   const state = useSelector((data) => data?.loginUser?.userData);
@@ -66,15 +67,7 @@ const Profile = () => {
               {formik.errors.email}
             </p>
           ) : null}
-          <CustomTextField
-            label="Gender"
-            type="text"
-            name="gender"
-            sx={{ mb: formik.errors.gender ? 1.5 : 2.5 }}
-            value={formik.values.gender}
-            onChange={formik.handleChange}
-            disabled
-          />
+          <GenderField sx={{ marginBottom: "10px" }} />
           {formik.errors.gender && formik.touched.gender ? (
             <p style={{ marginTop: "2px", marginBottom: "16px", color: "red" }}>
               {formik.errors.gender}

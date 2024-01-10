@@ -5,7 +5,7 @@ import StickyHeadTable from "../../components/CustomTable";
 const VerifiedUser = () => {
   const allUsers = useSelector((state) => state.loginUser.allUsers);
   const [verifiedUser, setVerifiedUser] = useState(
-    allUsers?.filter((item) => item.isVerified)
+    allUsers?.filter((item) => item.isVerified && !item.isBlock)
   );
   return (
     <Wrapper>
@@ -13,6 +13,7 @@ const VerifiedUser = () => {
         data={verifiedUser}
         setData={setVerifiedUser}
         check={"vu"}
+        name="Verified-Users"
       />
     </Wrapper>
   );

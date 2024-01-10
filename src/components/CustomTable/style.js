@@ -3,7 +3,6 @@ export const style = {
     width: "96%",
     overflow: "hidden",
     borderRadius: "10px",
-    height: "900px",
   },
   TableCell: {
     fontWeight: "600",
