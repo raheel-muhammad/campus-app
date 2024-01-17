@@ -16,10 +16,13 @@ import { style } from "./style";
 import { db, ref, set } from "../../Lib/Firebase";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function StickyHeadTable({ data, setData, check, name }) {
+  console.log("data", data);
   const [columns, setColumns] = React.useState([]);
   const handleClick = (index) => {
+    toast.success("Verified Successfully");
     let tempData = [...data];
     tempData[index].isVerified = true;
     set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
@@ -27,6 +30,7 @@ export default function StickyHeadTable({ data, setData, check, name }) {
     setData(tempData);
   };
   const handleBlocked = (index) => {
+    toast.success("Blocked Successfully");
     let tempData = [...data];
     tempData[index].isBlock = true;
     set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
@@ -34,6 +38,7 @@ export default function StickyHeadTable({ data, setData, check, name }) {
     setData(tempData);
   };
   const handleReject = (index) => {
+    toast.success("Rejected Successfully");
     let tempData = [...data];
     tempData[index].isReject = true;
     set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });
@@ -41,6 +46,7 @@ export default function StickyHeadTable({ data, setData, check, name }) {
     setData(tempData);
   };
   const handleUnblock = (index) => {
+    toast.success("Unblocked Successfully");
     let tempData = [...data];
     tempData[index].isBlock = false;
     set(ref(db, "users/" + tempData[index].userId), { ...tempData[index] });

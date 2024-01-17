@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     allUsers?.filter(
       (item) =>
         !item.isVerified && !item.isBlock && !item.isReject && !item.isUnblock
-    )
+    ) || []
   );
   return (
     <>

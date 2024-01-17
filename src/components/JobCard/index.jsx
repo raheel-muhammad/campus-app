@@ -46,12 +46,12 @@ const JobCard = ({ item }) => {
             Job Description: {item.jobDescription}
           </Typography>
           <Typography sx={{ marginBottom: "10px" }}>
-            MinimumGpaRequired: {item.minimumGpaRequired}
+            Min CGPA : {item.minimumGpaRequired}
           </Typography>
           <Typography sx={{ marginBottom: "10px" }}>
-            MinimumSalary: {item.minimumSalary}
+            Min Salary: {item.minimumSalary}
           </Typography>
-          {!item?.appliedStudents?.find((el) => el == userId) && (
+          {!item?.appliedStudents?.find((el) => el === userId) && (
             <Button sx={style.submitBtn} onClick={() => setOpen(true)}>
               Apply Now
             </Button>

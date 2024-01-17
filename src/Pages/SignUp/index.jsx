@@ -69,16 +69,16 @@ const SignUp = () => {
               role: values?.role,
             })
           );
+          navigate("/User-Verified-Page");
           toast.success("Registered Successfully");
-          navigate("/Dashboard");
         });
       } catch (error) {
         toast.error(error?.message.split("/")[1].replace(")", ""));
-
         setLoading(false);
       }
     },
   });
+
   const formikValidation = () => {
     return !!(
       Object.values(formik?.errors).some((error) => !!error) ||
@@ -229,6 +229,7 @@ const SignUp = () => {
           </Stack>
         </Box>
       </Box>
+      ;
     </Box>
   );
 };

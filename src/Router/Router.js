@@ -13,8 +13,11 @@ import NonVerifiedUsers from "../Pages/NonVerifiedUser";
 import PostJobs from "../components/PostJobs";
 import AllJobs from "../components/AllJobs";
 import { useSelector } from "react-redux";
+import UserVerifiedPage from "../Pages/UserVerifiedPage";
 const Router = () => {
-  const { role, userId } = useSelector((state) => state?.loginUser?.userData);
+  const { role, userId, isVerified } = useSelector(
+    (state) => state?.loginUser?.userData
+  );
 
   if (!userId)
     return (
@@ -26,7 +29,15 @@ const Router = () => {
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     );
-
+  if (!!userId && !isVerified) {
+    return (
+      <Routes>
+        <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
+        <Route path="/Dashboard" element={<AdminDashboard />} />
+        {isVerified && <Navigate to="/Dashboard" />}
+      </Routes>
+    );
+  }
   if (userId && role === "admin")
     return (
       <Routes>
@@ -45,6 +56,7 @@ const Router = () => {
         <Route path="/Post-Jobs" element={<PostJobs />} />
         <Route path="/Applied-Students" element={<AppliedStudents />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
       </Routes>
     );
   if (userId && role === "student")
@@ -54,6 +66,7 @@ const Router = () => {
         <Route path="/All-jobs" element={<AllJobs />} />
         <Route path="/Applied-Jobs" element={<AppliedJobs />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
       </Routes>
     );
 };

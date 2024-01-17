@@ -11,7 +11,7 @@ const AllJobs = () => {
         return { ...values, jobId: keys };
       });
     })
-    ?.filter((job) => !job?.appliedStudents?.find((el) => el == userId));
+    ?.filter((job) => !job?.appliedStudents?.find((el) => el === userId));
   return (
     <Wrapper>
       <CompanyCards data={allJobsArray} />

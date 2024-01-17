@@ -19,7 +19,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { style } from "./style";
 import { logOutUser } from "../../redux/Action";
-import { async } from "@firebase/util";
 
 const Wrapper = ({ children }) => {
   const [open, setOpen] = React.useState(false);

@@ -35,16 +35,17 @@ const App = () => {
           if (userData?.role === "company") {
             onValue(ref(db, "posts/" + user.uid), (snapshot) => {
               const jobs = snapshot.val();
-              Object.values(jobs).map((item) => {
+              console.log("jobs", jobs);
+              Object.values(jobs || {})?.map((item) => {
                 if (item?.appliedStudents)
                   item?.appliedStudents.map((id) =>
                     onValue(ref(db, "users/" + id), (snapshot) => {
                       const students = snapshot.val();
                       if (
-                        (appliedStudents && appliedStudents?.length == 0) ||
+                        (appliedStudents && appliedStudents?.length === 0) ||
                         appliedStudents?.filter(
-                          (checkId) => checkId?.userId == id
-                        )?.length != 0
+                          (checkId) => checkId?.userId === id
+                        )?.length !== 0
                       ) {
                         array.push(students);
                         dispatch(getAppliedStudents([...array]));
@@ -52,7 +53,7 @@ const App = () => {
                     })
                   );
               });
-              dispatch(getCompanyData(Object.values(jobs)));
+              dispatch(getCompanyData(Object.values(jobs || {})));
               setLoading(false);
             });
           }

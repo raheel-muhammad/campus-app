@@ -5,7 +5,7 @@ import Wrapper from "../Wrapper";
 const BlockedUsers = () => {
   const allUsers = useSelector((state) => state.loginUser.allUsers);
   const [blockedUser, setBlockedUser] = useState(
-    allUsers?.filter((item) => item.isBlock)
+    allUsers?.filter((item) => item.isBlock) || []
   );
   return (
     <Wrapper>
