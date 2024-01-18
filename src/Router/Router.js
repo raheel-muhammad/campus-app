@@ -4,7 +4,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AdminDashboard from "../components/AdminDashboard";
 import VerifiedUser from "../Pages/VerifiedUser";
 import ForgotPassword from "../Pages/ForgotPassword";
-import AppliedStudents from "../Pages/AppliedStudents";
 import PostedJobs from "../Pages/PostedJobs";
 import AppliedJobs from "../Pages/AppliedJobs";
 import BlockedUsers from "../Pages/BlockedUser";
@@ -54,7 +53,6 @@ const Router = () => {
         <Route path="/Dashboard" element={<AdminDashboard />} />
         <Route path="/Posted-Jobs" element={<PostedJobs />} />
         <Route path="/Post-Jobs" element={<PostJobs />} />
-        <Route path="/Applied-Students" element={<AppliedStudents />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
       </Routes>

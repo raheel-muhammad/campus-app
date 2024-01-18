@@ -46,7 +46,6 @@ const SignUp = () => {
           values.email,
           values.password
         ).then(async (res) => {
-          console.log("res", res);
           set(ref(db, "users/" + res.user.uid), {
             username: values.name,
             email: values.email,

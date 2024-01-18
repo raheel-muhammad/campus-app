@@ -19,7 +19,6 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function StickyHeadTable({ data, setData, check, name }) {
-  console.log("data", data);
   const [columns, setColumns] = React.useState([]);
   const handleClick = (index) => {
     toast.success("Verified Successfully");
@@ -86,12 +85,20 @@ export default function StickyHeadTable({ data, setData, check, name }) {
         label: "Unblock",
       },
     ];
+    let as = [
+      {
+        id: "CompanyName",
+        label: "Company Name",
+      },
+    ];
     if (check === "nvu") {
       tempCol.push(...nvu);
     } else if (check === "vu") {
       tempCol.push(...vu);
     } else if (check === "bu") {
       tempCol.push(...bu);
+    } else if (check === "as") {
+      tempCol.push(...as);
     }
     setColumns(tempCol);
   }, []);

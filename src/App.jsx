@@ -17,14 +17,12 @@ const App = () => {
   useEffect(() => {
     setLoading(true);
     onAuthStateChanged(auth, (user) => {
-      console.log("user:", user);
       let databaseListner;
       if (user) {
         let userData;
         databaseListner = onValue(ref(db, "users/" + user.uid), (snapshot) => {
           userData = snapshot.val();
           dispatch(getUserData({ ...userData }));
-          console.log("userData:", userData);
           if (userData?.role === "admin") {
             onValue(ref(db, "users/"), (snapshot) => {
               const allUsersData = snapshot.val();
@@ -35,17 +33,16 @@ const App = () => {
           if (userData?.role === "company") {
             onValue(ref(db, "posts/" + user.uid), (snapshot) => {
               const jobs = snapshot.val();
-              console.log("jobs", jobs);
               Object.values(jobs || {})?.map((item) => {
-                if (item?.appliedStudents)
+                if (!!item?.appliedStudents?.length)
                   item?.appliedStudents.map((id) =>
                     onValue(ref(db, "users/" + id), (snapshot) => {
                       const students = snapshot.val();
                       if (
-                        (appliedStudents && appliedStudents?.length === 0) ||
-                        appliedStudents?.filter(
+                        !!appliedStudents?.length ||
+                        !appliedStudents?.filter(
                           (checkId) => checkId?.userId === id
-                        )?.length !== 0
+                        )?.length
                       ) {
                         array.push(students);
                         dispatch(getAppliedStudents([...array]));

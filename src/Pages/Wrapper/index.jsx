@@ -1,48 +1,32 @@
-import { getAuth, signOut } from "firebase/auth";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
-import BlockIcon from "@mui/icons-material/Block";
-import GppMaybeIcon from "@mui/icons-material/GppMaybe";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
+import ApprovalIcon from "@mui/icons-material/Approval";
+import BlockIcon from "@mui/icons-material/Block";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import GppMaybeIcon from "@mui/icons-material/GppMaybe";
+import LogoutIcon from "@mui/icons-material/Logout";
 import NotificationAddIcon from "@mui/icons-material/NotificationAdd";
 import PostAddIcon from "@mui/icons-material/PostAdd";
-import ApprovalIcon from "@mui/icons-material/Approval";
-import Avatar from "@mui/material/Avatar";
-import LogoutIcon from "@mui/icons-material/Logout";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import WorkIcon from "@mui/icons-material/Work";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import CustomModal from "../../components/Modal";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { LogoutModal } from "../../components/Modal/LogoutModal";
 import { style } from "./style";
-import { logOutUser } from "../../redux/Action";
-
 const Wrapper = ({ children }) => {
   const [open, setOpen] = React.useState(false);
   const [menuItems, setMenuItems] = useState([]);
   const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     updateMenuItems(state?.loginUser.userData.role);
   }, []);
   const navigate = useNavigate();
   const handleClick = (name) => {
     navigate(`/${name}`);
-  };
-  const handleLogout = async () => {
-    const auth = getAuth();
-    await signOut(auth)
-      .then(() => {
-        dispatch(logOutUser());
-        navigate("/signIn");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
   };
   const Logout = () => {
     setOpen(true);
@@ -54,7 +38,6 @@ const Wrapper = ({ children }) => {
         { Icon: AccountCircleIcon, name: "Profile", handleClick },
         { Icon: PostAddIcon, name: "Posted-Jobs", handleClick },
         { Icon: PostAddIcon, name: "Post-Jobs", handleClick },
-        { Icon: ApprovalIcon, name: "Applied-Students", handleClick },
         { Icon: LogoutIcon, name: "Logout", handleClick: Logout },
       ]);
     } else if (role === "student") {
@@ -108,15 +91,8 @@ const Wrapper = ({ children }) => {
           </Box>
           <Box sx={style.profile}>
             <Box>{children}</Box>
-            <CustomModal
-              open={open}
-              setOpen={setOpen}
-              title="Logout"
-              paragraph="Do you really want to leave and log out?"
-              confirmButtonText="Yes, logout"
-              onClick={handleLogout}
-            />
           </Box>
+          <LogoutModal open={open} setOpen={setOpen} />
         </Box>
       </Box>
     </>

@@ -6,11 +6,13 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { db } from "../../Lib/Firebase";
-import CustomModal from "../Modal";
+import AppliedStudentModal from "../Modal/AppliedStudentModal";
+import ApplyModal from "../Modal/ApplyModal";
 import { style } from "./style";
 const JobCard = ({ item }) => {
   const [open, setOpen] = useState(false);
-  const userId = useSelector((state) => state.loginUser.userData.userId);
+  const { userId, role } = useSelector((state) => state.loginUser.userData);
+
   const handleJobs = async (item) => {
     let appliedStudents = item?.appliedStudents?.length
       ? item?.appliedStudents
@@ -51,21 +53,28 @@ const JobCard = ({ item }) => {
           <Typography sx={{ marginBottom: "10px" }}>
             Min Salary: {item.minimumSalary}
           </Typography>
-          {!item?.appliedStudents?.find((el) => el === userId) && (
+          {role === "student" ? (
+            !item?.appliedStudents?.find((el) => el === userId) && (
+              <Button sx={style.submitBtn} onClick={() => setOpen(true)}>
+                Apply Now
+              </Button>
+            )
+          ) : (
             <Button sx={style.submitBtn} onClick={() => setOpen(true)}>
-              Apply Now
+              View Applied Students
             </Button>
           )}
         </CardContent>
       </Card>
-      <CustomModal
-        open={open}
-        setOpen={setOpen}
-        title="Vacancy"
-        paragraph="Do you really want to apply?"
-        confirmButtonText="Yes, apply"
-        onClick={() => handleJobs(item)}
-      />
+      {role === "student" ? (
+        <ApplyModal
+          open={open}
+          setOpen={setOpen}
+          onClick={() => handleJobs(item)}
+        />
+      ) : (
+        <AppliedStudentModal item={item} open={open} setOpen={setOpen} />
+      )}
     </>
   );
 };
