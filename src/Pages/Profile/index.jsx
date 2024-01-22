@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import CustomTextField from "../../components/TextField";
+import CustomTextField from "../../components/CustomText";
 import Wrapper from "../Wrapper";
 import { Box, Button } from "@mui/material";
 import Avatar from "@mui/material/Avatar";

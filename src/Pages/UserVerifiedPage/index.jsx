@@ -2,8 +2,8 @@ import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { getAuth, signOut } from "firebase/auth";
 import React from "react";
-import test from "../../Assets/warning.jpg";
-import { logOutUser } from "../../redux/Action";
+import test from "../../assets/warning.jpg";
+import { logOutUser } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 

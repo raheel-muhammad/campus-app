@@ -5,7 +5,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CustomModal from ".";
-import { logOutUser } from "../../redux/Action";
+import { logOutUser } from "../../redux/action";
 import { style } from "./style";
 
 export const LogoutModal = ({ open, setOpen }) => {

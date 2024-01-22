@@ -9,7 +9,7 @@ export const style = {
   button: {
     color: "#fff",
     background: "#7433ff",
-    width: "30%",
+    width:{xs:"60%",sm:"60%",md:"30%",lg:"30%"},
     fontWeight: "600",
     textTransform: "lowercase",
     "&:hover": {
@@ -32,7 +32,7 @@ export const style = {
   form: {
     display: "flex",
     flexDirection: "column",
-    width: "40%",
+    width: "80%",
   },
   profileContainer: {
     display: "flex",

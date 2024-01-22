@@ -6,9 +6,9 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import test from "../../Assets/sideImage.jpg";
+import test from "../../assets/sideImage.jpg";
 import CustomButton from "../../components/Button";
-import CustomTextField from "../../components/TextField";
+import CustomTextField from "../../components/CustomText";
 import { forgotPasswordSchema } from "../../Schemas";
 import { style } from "./style";
 

@@ -5,13 +5,14 @@ import { style } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import StickyHeadTable from "../CustomTable";
 
 const AppliedStudentModal = ({ open, setOpen, item }) => {
   console.log("item", item);
   const Students = useSelector((state) => state?.loginUser?.appliedStudents);
   console.log("Student", Students);
-  const students = Students?.filter((item) => item?.id === Students.userId);
-  console.log("students", students);
+  const companyStudents = Students?.filter((std) => item?.appliedStudents?.includes(std?.userId));
+  console.log("students", companyStudents);
   const handleClose = () => {
     setOpen(false);
   };
@@ -27,6 +28,7 @@ const AppliedStudentModal = ({ open, setOpen, item }) => {
         >
           Applied Students
         </Typography>
+        <StickyHeadTable data={companyStudents}/>
       </CustomModal>
     </>
   );

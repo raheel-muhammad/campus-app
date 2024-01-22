@@ -3,13 +3,14 @@ export const style = {
     marginTop: "5px !important",
     width: "99% !important",
     padding: { xs: "6px", sm: "16px" },
+    width:"100%"
   },
   card: {
     minWidth: { md: "0px", lg: "275" },
     borderRadius: "10px",
   },
   para: {
-    fontSize: { xs: "17px", sm: "20px" },
+    fontSize: { xs: "14px", sm: "17px",md:"20px" },
     paddingBottom: "10px",
     color: "#7433ff",
   },

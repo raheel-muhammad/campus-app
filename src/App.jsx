@@ -5,8 +5,8 @@ import Router from "./Router/Router";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { onAuthStateChanged, onValue, ref, db, auth } from "./Lib/Firebase";
-import { getAllUserData, getUserData, getCompanyData } from "./redux/Action";
-import { getAllJobs, getAppliedStudents } from "./redux/Action/loginUser";
+import { getAllUserData, getUserData, getCompanyData } from "./redux/action";
+import { getAllJobs, getAppliedStudents } from "./redux/action/loginUser";
 import { useState } from "react";
 
 const App = () => {

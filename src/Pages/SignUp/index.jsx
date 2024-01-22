@@ -6,10 +6,10 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Stack from "@mui/material/Stack";
-import CustomTextField from "../../components/TextField";
+import CustomTextField from "../../components/CustomText";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import test from "../../Assets/sideImage.jpg";
+import test from "../../assets/sideImage.jpg";
 import { style } from "./style";
 import CustomButton from "../../components/Button";
 import { useFormik } from "formik";
@@ -18,7 +18,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { db, ref, set } from "../../Lib/Firebase";
-import { getUserData } from "../../redux/Action";
+import { getUserData } from "../../redux/action";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
