@@ -7,19 +7,19 @@ import { style } from "./style";
 import { useSelector } from "react-redux";
 
 const Cards = () => {
-  const { allJobs, userData, allUsers } = useSelector(
+  const { allJobs, userData, allUsers,Students,item,companyJobs } = useSelector(
     (state) => state?.loginUser
   );
   const allJobsArray = allJobs.flatMap((item, index) => {
     return Object.values(item);
   });
-  const availableJobs = allJobsArray.filter(
+  const availableJobs = companyJobs.filter(
     (job) => !job?.appliedStudents?.find((el) => el === userData.userId)
   );
-  const appliedJobs = allJobsArray.filter((job) =>
+  const appliedJobs = companyJobs.filter((job) =>
     job?.appliedStudents?.find((el) => el === userData.userId)
   );
-  const PostedJobs = allJobsArray.filter((job) =>
+  const PostedJobs = companyJobs.filter((job) =>
     job?.appliedStudents?.find((el) => el === userData.userId)
   );
   const NonVerifiedUser = allUsers.filter(
@@ -30,7 +30,7 @@ const Cards = () => {
     (item) => item.isVerified && !item.isBlock
   );
   const BlockedUser = allUsers.filter((item) => item.isBlock);
-
+  const appliedStudents = Students?.filter((std) => item?.appliedStudents?.includes(std?.userId));
   const index =
     userData.role === "admin" ? 0 : userData.role === "company" ? 1 : 2;
   const data = [
@@ -42,14 +42,16 @@ const Cards = () => {
     ],
     [
       { name: "Posted Jobs", value: PostedJobs?.length || 0 },
-      { name: "Applied Students", value: 23 },
+      { name: "Applied Students", value: appliedStudents?.length||0 },
     ],
+    
     [
       { name: "Total Jobs", value: allJobsArray?.length || 0 },
       { name: "Available Jobs", value: availableJobs?.length || 0 },
       { name: "Applied Jobs", value: appliedJobs?.length || 0 },
     ],
   ];
+  console.log("posted Jobs",PostedJobs)
   return (
     <Grid
       container

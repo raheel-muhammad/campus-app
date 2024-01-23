@@ -17,7 +17,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LogoutModal } from "../../components/Modal/LogoutModal";
 import { style } from "./style";
+import MenuIcon from '@mui/icons-material/Menu';
+import CustomDrawer from "../../components/CustomDrawer"
 const Wrapper = ({ children }) => {
+  const [openDrawer,setOpenDrawer]=useState(false)
   const [open, setOpen] = React.useState(false);
   const [menuItems, setMenuItems] = useState([]);
   const state = useSelector((state) => state);
@@ -31,6 +34,9 @@ const Wrapper = ({ children }) => {
   const Logout = () => {
     setOpen(true);
   };
+  const handleMenuIcon = ()=>{
+    setOpenDrawer(true);
+  }
   const updateMenuItems = (role) => {
     if (role === "company") {
       setMenuItems([
@@ -62,7 +68,7 @@ const Wrapper = ({ children }) => {
   return (
     <>
       <Box sx={style.drawer}>
-        <Box sx={style.drawerItems}>
+         <Box sx={style.drawerItems}>
           <AddHomeWorkIcon sx={style.icon} />
           <Box sx={style.heading}>Campus-App</Box>
           {menuItems.map((item) => {
@@ -82,6 +88,8 @@ const Wrapper = ({ children }) => {
         <Box sx={style.Container}>
           <Box sx={style.subContainer}>
             <Box sx={style.dashboard}>
+                <MenuIcon sx={{display:{xs:"block",sm:"none"}}} onClick={handleMenuIcon}/>
+                <CustomDrawer menuItems={menuItems} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
               Dashboard
               <Box sx={style.dashboardItems}>
                 <NotificationAddIcon />

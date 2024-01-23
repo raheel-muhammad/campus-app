@@ -24,7 +24,6 @@ const JobCard = ({ item }) => {
       setOpen(false);
       toast.success("Applied Successfully");
     } catch (error) {
-      console.log(error);
       setOpen(false);
       toast.error("error occurred");
     }

@@ -3,7 +3,7 @@ export const style = {
   form: {
     display: "flex",
     flexDirection: "column",
-    width: "40%",
+    width: "50%",
   },
   buttonDiv: { display: "flex", flexDirection: "row", gap: "40%" },
   button: {

@@ -2,8 +2,6 @@ export const style = {
   drawer: {
     display: "flex",
     flexDirection: "row",
-    background: "#f0f8ff",
-    height: "100vh",
   },
   drawerItems: {
     background: "#7433FF",
@@ -61,11 +59,10 @@ export const style = {
     zIndex: "1",
     marginLeft: { xs: "0px", sm: "250px" },
     width: {
-      xs: "93%",
+      xs: "96%",
       sm: "64%",
-      md: "73%",
+      md: "68%",
       lg: "75%",
-      xl: "81%",
     },
   },
   dashboard: {
@@ -78,7 +75,7 @@ export const style = {
     alignItems: "center",
   },
   dashboardItems: {
-    paddingRight: "50px",
+    paddingRight: "20px",
     display: "flex",
     alignItems: "center",
     gap: "10px",

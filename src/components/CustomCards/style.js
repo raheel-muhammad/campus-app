@@ -1,9 +1,9 @@
 export const style = {
   grid: {
     marginTop: "5px !important",
-    width: "99% !important",
     padding: { xs: "6px", sm: "16px" },
-    width:"100%"
+    display: "flex",
+    justifyContent: "center"
   },
   card: {
     minWidth: { md: "0px", lg: "275" },

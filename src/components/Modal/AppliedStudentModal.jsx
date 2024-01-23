@@ -8,11 +8,8 @@ import { useState } from "react";
 import StickyHeadTable from "../CustomTable";
 
 const AppliedStudentModal = ({ open, setOpen, item }) => {
-  console.log("item", item);
   const Students = useSelector((state) => state?.loginUser?.appliedStudents);
-  console.log("Student", Students);
   const companyStudents = Students?.filter((std) => item?.appliedStudents?.includes(std?.userId));
-  console.log("students", companyStudents);
   const handleClose = () => {
     setOpen(false);
   };
