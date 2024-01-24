@@ -59,10 +59,10 @@ export const style = {
     zIndex: "1",
     marginLeft: { xs: "0px", sm: "250px" },
     width: {
-      xs: "96%",
-      sm: "64%",
+      xs: "92%",
+      sm: "62%",
       md: "68%",
-      lg: "75%",
+      lg: "73%",
     },
   },
   dashboard: {

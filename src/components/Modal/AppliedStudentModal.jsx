@@ -25,7 +25,7 @@ const AppliedStudentModal = ({ open, setOpen, item }) => {
         >
           Applied Students
         </Typography>
-        <StickyHeadTable data={companyStudents}/>
+        <StickyHeadTable data={companyStudents} item={item}/>
       </CustomModal>
     </>
   );

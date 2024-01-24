@@ -49,7 +49,7 @@ export const style = {
   },
   paragraphDiv: {
     marginTop: "20px",
-    width: { xs: "200px", sm: "100%" },
+    width: { xs: "263px", sm: "90%" },
   },
   paragraphTwo: {
     mr: 2,

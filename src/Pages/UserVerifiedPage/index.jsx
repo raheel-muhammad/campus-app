@@ -17,9 +17,7 @@ const UserVerifiedPage = () => {
         dispatch(logOutUser());
         navigate("/signIn");
       })
-      .catch((error) => {
-        // An error happened.
-      });
+      .catch((error) => {});
   };
   return (
     <>

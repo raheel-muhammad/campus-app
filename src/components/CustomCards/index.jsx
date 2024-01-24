@@ -7,21 +7,19 @@ import { style } from "./style";
 import { useSelector } from "react-redux";
 
 const Cards = () => {
-  const { allJobs, userData, allUsers,Students,item,companyJobs } = useSelector(
+  const { allJobs, userData, allUsers } = useSelector(
     (state) => state?.loginUser
   );
   const allJobsArray = allJobs.flatMap((item, index) => {
     return Object.values(item);
   });
-  const availableJobs = companyJobs.filter(
+  const availableJobs = allJobsArray.filter(
     (job) => !job?.appliedStudents?.find((el) => el === userData.userId)
   );
-  const appliedJobs = companyJobs.filter((job) =>
+  const appliedJobs = allJobsArray.filter((job) =>
     job?.appliedStudents?.find((el) => el === userData.userId)
   );
-  const PostedJobs = companyJobs.filter((job) =>
-    job?.appliedStudents?.find((el) => el === userData.userId)
-  );
+  const companiesJobs = useSelector((state) => state?.loginUser?.companyJobs);
   const NonVerifiedUser = allUsers.filter(
     (item) =>
       !item.isVerified && !item.isBlock && !item.isReject && !item.isUnblock
@@ -30,7 +28,8 @@ const Cards = () => {
     (item) => item.isVerified && !item.isBlock
   );
   const BlockedUser = allUsers.filter((item) => item.isBlock);
-  const appliedStudents = Students?.filter((std) => item?.appliedStudents?.includes(std?.userId));
+  
+  const Students = useSelector((state) => state?.loginUser?.appliedStudents);
   const index =
     userData.role === "admin" ? 0 : userData.role === "company" ? 1 : 2;
   const data = [
@@ -41,8 +40,8 @@ const Cards = () => {
       { name: "Blocked-Users", value: BlockedUser?.length },
     ],
     [
-      { name: "Posted Jobs", value: PostedJobs?.length || 0 },
-      { name: "Applied Students", value: appliedStudents?.length||0 },
+      { name: "Posted Jobs", value: companiesJobs?.length || 0 },
+      { name: "Applied Students", value: Students?.length||0 },
     ],
     
     [
@@ -51,7 +50,7 @@ const Cards = () => {
       { name: "Applied Jobs", value: appliedJobs?.length || 0 },
     ],
   ];
-  console.log("posted Jobs",PostedJobs)
+
   return (
     <Grid
       container

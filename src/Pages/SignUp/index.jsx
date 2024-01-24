@@ -66,6 +66,7 @@ const SignUp = () => {
               username: values.name,
               email: values.email,
               role: values?.role,
+              isVerified: false
             })
           );
           navigate("/User-Verified-Page");
@@ -228,7 +229,6 @@ const SignUp = () => {
           </Stack>
         </Box>
       </Box>
-      ;
     </Box>
   );
 };

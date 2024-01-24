@@ -1,6 +1,6 @@
 export const style = {
   Container: {
-    width: "96%",
+    width: {xs:"94%",sm:"93%",md:"94%",lg:"94%"},
     overflow: "hidden",
     borderRadius: "10px",
   },
