@@ -1,15 +1,29 @@
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { getAuth, signOut } from "firebase/auth";
-import React from "react";
+import React, { useEffect } from "react";
 import test from "../../assets/warning.jpg";
 import { logOutUser } from "../../redux/action";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { onValue, ref } from "firebase/database";
+import { db } from "../../Lib/Firebase";
 
 const UserVerifiedPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userId } = useSelector((state) => state.loginUser.userData);
+
+  useEffect(() => {
+  let dbListner=  onValue(ref(db, "users/" + userId), (snapshot) => {
+      const students = snapshot.val();
+      if (students.isVerified) {
+        navigate("/Dashboard");
+      }
+    });
+    return()=> dbListner()
+  }, []);
+
   const handleLogout = async () => {
     const auth = getAuth();
     await signOut(auth)

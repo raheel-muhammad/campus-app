@@ -17,55 +17,52 @@ const Router = () => {
   const { role, userId, isVerified } = useSelector(
     (state) => state?.loginUser?.userData
   );
+  console.log("role:", role);
+  console.log("isVerified:", isVerified);
+  console.log("userId:", userId);
 
-  if (!userId)
-    return (
-      <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route path="/signIn" element={<Login />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="forgotPassword" element={<ForgotPassword />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
-    );
-  if (!!userId && !isVerified) {
-    return (
-      <Routes>
+  return (
+    <Routes>
+      {!userId ? (
+        <>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/signIn" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="forgotPassword" element={<ForgotPassword />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </>
+      ) : !isVerified ? (
+        <>
         <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
-        <Route path="/Dashboard" element={<AdminDashboard />} />
-        {isVerified && <Navigate to="/Dashboard" />}
-      </Routes>
-    );
-  }
-  if (userId && role === "admin")
-    return (
-      <Routes>
-        <Route path="/Dashboard" element={<AdminDashboard />} />
-        <Route path="/Verified-Users" element={<VerifiedUser />} />
-        <Route path="/Non-Verified-Users" element={<NonVerifiedUsers />} />
-        <Route path="/Blocked-Users" element={<BlockedUsers />} />
-        <Route path="/Profile" element={<Profile />} />
-      </Routes>
-    );
-  if (userId && role === "company")
-    return (
-      <Routes>
-        <Route path="/Dashboard" element={<AdminDashboard />} />
-        <Route path="/Posted-Jobs" element={<PostedJobs />} />
-        <Route path="/Post-Jobs" element={<PostJobs />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
-      </Routes>
-    );
-  if (userId && role === "student")
-    return (
-      <Routes>
-        <Route path="/Dashboard" element={<AdminDashboard />} />
-        <Route path="/All-jobs" element={<AllJobs />} />
-        <Route path="/Applied-Jobs" element={<AppliedJobs />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/User-Verified-Page" element={<UserVerifiedPage />} />
-      </Routes>
-    );
+        <Route path="*" element={<Navigate replace to="/User-Verified-Page" />} />
+        </>
+      ) : role === "admin" ? (
+        <>
+          <Route path="/Verified-Users" element={<VerifiedUser />} />
+          <Route path="/Non-Verified-Users" element={<NonVerifiedUsers />} />
+          <Route path="/Blocked-Users" element={<BlockedUsers />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Dashboard" element={<AdminDashboard />} />
+          <Route path="/*" element={<Navigate replace to="/Dashboard" />} />
+        </>
+      ) : role === "company" ? (
+        <>
+          <Route path="/Posted-Jobs" element={<PostedJobs />} />
+          <Route path="/Post-Jobs" element={<PostJobs />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Dashboard" element={<AdminDashboard />} />
+          <Route path="/*" element={<Navigate replace to="/Dashboard" />} />
+        </>
+      ) : (
+        <>
+          <Route path="/All-jobs" element={<AllJobs />} />
+          <Route path="/Applied-Jobs" element={<AppliedJobs />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Dashboard" element={<AdminDashboard />} />
+          <Route path="/*" element={<Navigate replace to="/Dashboard" />} />
+        </>
+      )}
+    </Routes>
+  );
 };
 export default Router;
